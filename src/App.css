@@ -1,38 +1,159 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+body{
+   background: #FC5C7D;  /* fallback for old browsers */
+   background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
+  /* background-image: url('./assets/images/luke-chesser-IGtutkXikuc-unsplash.jpg'); */
+   font-family: 'Poppins', sans-serif;
+    color: #fff;
+    height: 100%;
+}
+html{
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+  margin: 0;
+  padding: 0 5%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+
+  color: #fff;
+}
+.logo img{
+  width: 50px;
+}
+.logo{
+ display: flex;
+}
+.menu{
+  display: inherit;
+  justify-content: space-around;
+}
+.menu h3{
+  margin-right: 25px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.wrapper{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+}
+.wrapper h1{
+  font-size: 75px;
+  margin-bottom: 0;
+}
+.wrapper h3{
+  font-size: 30px;
+  font-weight:700;
+  margin-top: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cards{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  padding: 10px;
+}
+.cards img {
+  width: 120px;
 }
 
-.App-link {
-  color: #61dafb;
+.apps{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  background-color: rgba(255, 255, 255, 0.275);
+  border-radius:15px;
+  height: 400px;
+  width: 400px;
+  padding: 20px;
+}
+.textContainer{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  margin-right: 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer{
+  background-color: rgb(27, 26, 26);
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer h5{
+  font-size: 15px;
+  margin-right: 20px;
+  font-weight: 400;
+}
+.app{
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.127);
+  border-radius:15px;
+}
+.app .cards{
+  width: 30%;
+}
+.info{
+  width: 70%;
+  margin: 40px 70px 40px 20px ;
+}
+.info h4{
+  font-weight: 400;
+}
+.info h1{
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.basic {
+
+}
+.basic button{
+  padding: 10px 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  border: none;
+  border-radius: 20px;
+
+  cursor: pointer;
+}
+.play-basic-win{
+  
+}
+.advanced{
+ 
+}
+.play-block{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.play-block button{
+  padding: 10px 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.play-block h1{
+   margin: 1rem;
+}
+.wrapper.content{
+  margin-top: 10%;
+  margin-bottom: 15%;
 }
