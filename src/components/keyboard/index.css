@@ -1,0 +1,117 @@
+/* html { box-sizing: border-box; } */
+.keyboard{
+    position: absolute;
+    bottom: -5vh;
+    font-size: 1.09vw;
+    transform:
+    perspective(900px)
+    translate3d(0px, 0px, -250px)
+    rotateX(40deg)
+    scale(0.9, 0.9);
+}  
+.default-key{
+    width: 5em;
+    height: 5em;
+    border: solid 0.2em;
+    border-radius: 0.3em;
+    margin: 0.3em;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.row{
+    display: flex;
+}
+.function div{
+    width: 4.8em;
+    height: 3em;
+}
+#Backspace{
+    width: 13.7em;
+}
+#Tab{
+    /* width: 6em; */
+    width: 9em;
+}
+#Shift{
+    /* width: 10.5em; */
+    width: 15.1em;
+}
+#Enter1{
+    /* width: 7.4em; */
+    width: 9.4em;
+}
+#Enter2{
+    /* width: 9.2em; */
+    width: 13.2em;
+}
+#CapsLK{
+    /* width: 8em; */
+    width: 11em;
+}
+#Ctrl1{
+    /* width: 4em; */
+    width: 7em;
+}
+#Space{
+    /* width: 23.6em; */
+    width: 33.8em;
+}
+#up-down {
+    border: none;
+    flex-direction: column; 
+    display: block;
+    width: auto;
+}
+#up, #down {
+    /* width: 3em;
+    height: 1.4em; */
+
+    width: 5em;
+    height: 2.44em;
+    border: solid 0.2em;
+    border-radius: 0.3em;
+    text-align: center;
+}
+#up{
+    
+    border-bottom: solid 0.1em;
+}
+ #down{
+   
+    border-top: solid 0.1em;
+ }
+ #Right, #Left {
+    /* width: 3.7em; */
+    width: 5.7em;
+ }
+.q1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0 0.3em;
+}
+.q2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 0.3em;
+}
+.q3{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0 0.3em;
+}
+.q4{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 0.3em;
+}
+.quadrant{
+    position: relative;
+}

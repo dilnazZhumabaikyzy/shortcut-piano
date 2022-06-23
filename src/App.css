@@ -157,3 +157,7 @@ html{
   margin-top: 10%;
   margin-bottom: 15%;
 }
+.field{
+ display: flex;
+ justify-content: center;
+}
