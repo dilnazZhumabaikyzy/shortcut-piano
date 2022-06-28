@@ -161,3 +161,32 @@ html{
  display: flex;
  justify-content: center;
 }
+
+.infoblock{
+  background-color: rgba(95, 255, 202, 0.383);
+  width: 70%;
+  height: 20vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  flex-direction: column;
+}
+.text-link{
+  text-decoration: none;
+}
+
+.text-link:visited{
+  text-decoration: none;
+  color: black;
+}
+
+.text-link:hover{
+  text-decoration: none;
+  color: black;
+}
+.text-link:active{
+  text-decoration: none;
+  color: black;
+}

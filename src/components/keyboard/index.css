@@ -9,13 +9,27 @@
     rotateX(40deg)
     scale(0.9, 0.9);
 }  
+.animation-keyup{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(66, 200, 200);
+    position: absolute;
+    transform:   perspective(900px)
+    translate3d(0px, -1200px, -250px)
+    rotateX(0deg)
+    scale(0.9, 0.9); 
+    transition: transform 2s linear;
+}
 .default-key{
     width: 5em;
     height: 5em;
     border: solid 0.2em;
     border-radius: 0.3em;
     margin: 0.3em;
+    position: relative;
 }
+
 
 .center{
     display: flex;
@@ -25,7 +39,7 @@
 .row{
     display: flex;
 }
-.function div{
+#functions div{
     width: 4.8em;
     height: 3em;
 }
@@ -36,7 +50,7 @@
     /* width: 6em; */
     width: 9em;
 }
-#Shift{
+#Shift1, #Shift2 {
     /* width: 10.5em; */
     width: 15.1em;
 }
@@ -58,7 +72,7 @@
 }
 #Space{
     /* width: 23.6em; */
-    width: 33.8em;
+    width: 35.2em;
 }
 #up-down {
     border: none;
@@ -84,10 +98,12 @@
    
     border-top: solid 0.1em;
  }
+ /* 
  #Right, #Left {
-    /* width: 3.7em; */
     width: 5.7em;
  }
+  */
+
 .q1{
     position: absolute;
     top: 0;
@@ -114,4 +130,9 @@
 }
 .quadrant{
     position: relative;
+}
+
+.anim {
+    transform: translate3d(0px, -10px, -250px);
+    background-color: rgba(137, 43, 226, 0.422);
 }

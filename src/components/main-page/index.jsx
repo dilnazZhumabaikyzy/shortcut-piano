@@ -1,4 +1,6 @@
 import winLogo from '../../assets/images/logo-windows-13475.png';
+import { Link } from "react-router-dom";
+
 export const Main = ()=>{
     return(
         <>
@@ -28,7 +30,10 @@ export const Main = ()=>{
                 <div className='basic'>                   
                 <div className='play-block'>
                      <h1>Basic</h1>
-                     <button className='play-basic-win'>Play</button>
+                     <button className='play-basic-win'>
+                     <Link to="/play" className='text-link'>Play</Link>
+                        
+                        </button>
                 </div>
                 
                 <h4>Aliquam erat volutpat. Quisque sed porta massa. Suspendisse hendrerit finibus lectus, vel interdum tortor iaculis ut. Ut malesuada massa vitae augue condimentum sagittis. Quisque id neque sit amet arcu tristique volutpat scelerisque sed felis. Nam auctor consectetur arcu ac efficitur.</h4>

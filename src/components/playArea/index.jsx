@@ -1,12 +1,12 @@
 import { Keyboard } from "../keyboard";
+import { Infoblock } from "../infoblock";
 
-export const PlayArea =()=> {
+export const PlayArea = () => {
   return (
-  <div className="field">
-        
-   
-     <Keyboard/>  
-  </div>
+    <div className="field">
+      <Infoblock />
+      <Keyboard />
+    </div>
   );
 }
 

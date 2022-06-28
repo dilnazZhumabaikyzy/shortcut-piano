@@ -10,7 +10,7 @@ function Play() {
   return (
   <>
     <div className='container'>
-        <Header></Header>
+      <Header></Header>
       <PlayArea></PlayArea>      
      </div>
       {/* <Footer></Footer> */}

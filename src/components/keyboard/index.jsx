@@ -1,226 +1,539 @@
+import { keyboard } from '@testing-library/user-event/dist/keyboard';
+import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './index.css';
 
-export const Keyboard = ()=>{
-    return(
-        <div className='keyboard'>
-        <div className="function row">
-                <div className="default-key center" id='Esc'>Esc</div>
-                <div className="default-key center" id='F1'>F1</div>
-                <div className="default-key center" id='F2'>F2</div>
-                <div className="default-key center" id='F3'>F3</div>
-                <div className="default-key center" id='F4'>F4</div>
-                <div className="default-key center" id='F5'>F5</div>
-                <div className="default-key center" id='F6'>F6</div>
-                <div className="default-key center" id='F7'>F7</div>
-                <div className="default-key center" id='F8'>F8</div>
-                <div className="default-key center" id='F9'>F9</div>
-                <div className="default-key center" id='F10'>F10</div>
-                <div className="default-key center" id='F11'>F11</div>
-                <div className="default-key center" id='F12'>F12</div>
-                <div className="default-key center" id='PrtSc'>PrtSc</div>
-                <div className="default-key center" id='Ins'>Ins</div>
-                <div className="default-key center" id='Del'>Del</div>
-        </div>
-        <div className="numbers row">
-                <div className="default-key center" id='~'>~</div>
-                <div className="default-key center" id='n1'>1</div>
-                <div className="default-key center" id='n2'>2</div>
-                <div className="default-key center" id='n3'>3</div>
-                <div className="default-key center" id='n4'>4</div>
-                <div className="default-key center" id='n5'>5</div>
-                <div className="default-key center" id='n6'>6</div>
-                <div className="default-key center" id='n7'>7</div>
-                <div className="default-key center" id='n8'>8</div>
-                <div className="default-key center" id='n9'>9</div>
-                <div className="default-key center" id='n0'>0</div>
-                <div className="default-key center" id='-'>-</div>
-                <div className="default-key center" id='-'>=</div>
-                <div className="default-key center" id='Backspace'>BackSpace</div>
-        </div>
-        <div className="row">
-                <div className="default-key center" id='Tab'>Tab</div>
-                {/* <div className="default-key center" id='CapsLK'>CapsLK</div> */}
-                <div className="default-key quadrant" id='lq'>
-                <div className="q2">Q</div>
-                <div className="q4">Й</div>
-                </div>
-                <div className="default-key quadrant" id='lw'>
-                <div className="q2">W</div>
-                <div className="q4">Ц</div>
-                </div>
-                <div className="default-key quadrant" id='lq'>
-                <div className="q2">E</div>
-                <div className="q4">У</div>
-                </div>
-                <div className="default-key quadrant" id='lq'>
-                <div className="q2">R</div>
-                <div className="q4">К</div>
-                </div>
-                <div className="default-key quadrant" id='lq'>
-                <div className="q2">T</div>
-                <div className="q4">Е</div>
-                </div>
-                <div className="default-key quadrant" id='lq'>
-                <div className="q2">Y</div>
-                <div className="q4">Н</div>
-                </div>
-                <div className="default-key quadrant" id='lq'>
-                <div className="q2">U</div>
-                <div className="q4">Г</div>
-                </div>
-                <div className="default-key quadrant" id='lq'>
-                <div className="q2">I</div>
-                <div className="q4">Ш</div>
-                </div>
-                <div className="default-key quadrant" id='lq'>
-                <div className="q2">O</div>
-                <div className="q4">Щ</div>
-                </div>
-                <div className="default-key quadrant" id='lq'>
-                <div className="q2">P</div>
-                <div className="q4">З</div>
-                </div>
-                <div className="default-key quadrant" id='signcbl'>
-                <div className="q2">{`{`}</div>
-                <div className="q3">{`[`}</div>
-                <div className="q4">Х</div>
-                </div>
-                <div className="default-key quadrant" id='signcbr'>
-                <div className="q2">{`{`}</div>
-                <div className="q3">{`[`}</div>
-                <div className="q4">Ъ</div>
-                </div>
-                <div className="default-key quadrant" id='Enter1'>
-                <div className="q1">{`/`}</div>
-                <div className="q2">{`|`}</div>
-                <div className="q3">\</div>
-                <div className="q4">\</div>
-                </div>     
-            </div>
-            <div className="row">
-                <div className="default-key center" id='CapsLK'>CapsLK</div>
-                {/* <div className="default-key center" id='CapsLK'>CapsLK</div> */}
-                <div className="default-key quadrant" id='la'>
-                <div className="q2">A</div>
-                <div className="q4">Ф</div>
-                </div>
-                <div className="default-key quadrant" id='ls'>
-                <div className="q2">S</div>
-                <div className="q4">Ы</div>
-                </div>
-                <div className="default-key quadrant" id='ld'>
-                <div className="q2">D</div>
-                <div className="q4">В</div>
-                </div>
-                <div className="default-key quadrant" id='lf'>
-                <div className="q2">F</div>
-                <div className="q4">А</div>
-                </div>
-                <div className="default-key quadrant" id='lg'>
-                <div className="q2">G</div>
-                <div className="q4">П</div>
-                </div>
-                <div className="default-key quadrant" id='lh'>
-                <div className="q2">H</div>
-                <div className="q4">Р</div>
-                </div>
-                <div className="default-key quadrant" id='lj'>
-                <div className="q2">J</div>
-                <div className="q4">О</div>
-                </div>
-                <div className="default-key quadrant" id='lk'>
-                <div className="q2">K</div>
-                <div className="q4">Л</div>
-                </div>
-                <div className="default-key quadrant" id='ll'>
-                <div className="q2">L</div>
-                <div className="q4">Д</div>
-                </div>
-                
-                <div className="default-key quadrant" id='signcolon'>
-                <div className="q2">{`:`}</div>
-                <div className="q3">{`;`}</div>
-                <div className="q4">Ж</div>
-                </div>
-                <div className="default-key quadrant" id='signquote'>
-                <div className="q2">{`"`}</div>
-                <div className="q3">{`'`}</div>
-                <div className="q4">Э</div>
-                </div>
-                <div className="default-key center" id='Enter2'>
-                Enter
-                </div>     
-            </div>
-            <div className="row">
-                <div className="default-key center" id='Shift'>Shift</div>
-                <div className="default-key quadrant" id='lz'>
-                <div className="q2">Z</div>
-                <div className="q4">Я</div>
-                </div>
-                <div className="default-key quadrant" id='lx'>
-                <div className="q2">X</div>
-                <div className="q4">Ч</div>
-                </div>
-                <div className="default-key quadrant" id='lc'>
-                <div className="q2">C</div>
-                <div className="q4">С</div>
-                </div>
-                <div className="default-key quadrant" id='lv'>
-                <div className="q2">V</div>
-                <div className="q4">М</div>
-                </div>
-                <div className="default-key quadrant" id='lb'>
-                <div className="q2">B</div>
-                <div className="q4">И</div>
-                </div>
-                <div className="default-key quadrant" id='ln'>
-                <div className="q2">N</div>
-                <div className="q4">Т</div>
-                </div>
-                <div className="default-key quadrant" id='lm'>
-                <div className="q2">M</div>
-                <div className="q4">Ь</div>
-                </div>
-            
-                <div className="default-key quadrant" id='signg'>
-                <div className="q2">{`<`}</div>
-                <div className="q3">{`,`}</div>
-                <div className="q4">Б</div>
-                </div>
-                <div className="default-key quadrant" id='signl'>
-                <div className="q2">{`>`}</div>
-                <div className="q3">{`.`}</div>
-                <div className="q4">Ю</div>
-                </div>
-               
-                <div className="default-key quadrant" id='q'>
-                <div className="q1">{`,`}</div>
-                <div className="q2">{`?`}</div>
-                <div className="q3">{`/`}</div>
-                <div className="q4">.</div>
-                </div> 
+import * as Tone from 'tone';
+// create the piano and load 5 velocity steps
 
-                <div className="default-key center" id='Shift'>Shift</div>
+
+//connect it to the speaker output
+
+
+
+
+let animatingObj;
+setTimeout(() => {
+    animatingObj = document.getElementById('ak');
+}, 100);
+
+
+
+/////////////////////////////////
+const row1 = ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'PrtSc', 'Ins', 'Del'];
+const row2 = ['~', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'];
+const row3 = [{
+    name: "Tab",
+    type: "default-key center",
+    style: false,
+},
+{
+    name: "Q",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "Q",
+        q4: "Й"
+    }
+},
+{
+    name: "W",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "W",
+        q4: "Ц"
+    }
+},
+{
+    name: "E",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "E",
+        q4: "У"
+    }
+},
+{
+    name: "R",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "R",
+        q4: "К"
+    }
+},
+{
+    name: "T",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "T",
+        q4: "E"
+    }
+},
+{
+    name: "Y",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "Y",
+        q4: "H"
+    }
+},
+{
+    name: "U",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "U",
+        q4: "Г"
+    }
+},
+{
+    name: "I",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "I",
+        q4: "Ш"
+    }
+},
+{
+    name: "O",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "O",
+        q4: "Щ"
+    }
+},
+{
+    name: "P",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "P",
+        q4: "З"
+    }
+},
+{
+    name: "{",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "{",
+        q3: "[",
+        q4: "X"
+    }
+},
+{
+    name: "}",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "}",
+        q3: "]",
+        q4: "Ъ"
+    }
+},
+{
+    name: "|",
+    type: "default-key quadrant",
+    quadrants: {
+        q1: "/",
+        q2: "|",
+        q3: "\\",
+        q4: "\\"
+    },
+    id: "Enter1"
+}
+];
+const row4 = [{
+    name: "CapsLK",
+    type: "default-key center",
+    style: false
+},
+{
+    name: "A",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "A",
+        q4: "Ф"
+    }
+},
+{
+    name: "S",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "S",
+        q4: "Ы"
+    }
+},
+{
+    name: "D",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "D",
+        q4: "В"
+    }
+},
+{
+    name: "F",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "F",
+        q4: "A"
+    }
+},
+{
+    name: "G",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "G",
+        q4: "Р"
+    }
+},
+{
+    name: "H",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "H",
+        q4: "Р"
+    }
+},
+{
+    name: "J",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "J",
+        q4: "O"
+    }
+},
+{
+    name: "K",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "K",
+        q4: "Л"
+    }
+},
+{
+    name: "L",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "L",
+        q4: "Д"
+    }
+},
+{
+    name: ":",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: ":",
+        q3: ";",
+        q4: "Ж"
+    },
+    id: "signcolon"
+},
+{
+    name: "\"",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "\"",
+        q3: "'",
+        q4: "Э"
+    },
+    id: "signquote"
+},
+{
+    name: "Enter",
+    type: "default-key center",
+    id: "Enter2"
+}
+];
+const row5 = [{
+    name: "Shift",
+    type: "default-key center",
+    id: "Shift1"
+},
+{
+    name: "Z",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "Z",
+        q4: "Я"
+    }
+},
+{
+    name: "X",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "X",
+        q4: "Ч"
+    }
+},
+{
+    name: "C",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "C",
+        q4: "C"
+    }
+},
+{
+    name: "V",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "V",
+        q4: "М"
+    }
+},
+{
+    name: "B",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "B",
+        q4: "И"
+    }
+},
+{
+    name: "N",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "N",
+        q4: "Т"
+    }
+},
+{
+    name: "M",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "M",
+        q4: "Ь"
+    }
+},
+{
+    name: "<",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: "<",
+        q3: ",",
+        q4: "Б"
+    }
+},
+{
+    name: ">",
+    type: "default-key quadrant",
+    quadrants: {
+        q2: ">",
+        q3: ".",
+        q4: "Ю"
+    }
+},
+{
+    name: ",",
+    type: "default-key quadrant",
+    quadrants: {
+        q1: ",",
+        q2: "?",
+        q3: "/",
+        q4: "."
+    }
+},
+{
+    name: "Shift",
+    type: "default-key quadrant",
+    quadrants: {
+        q1: ",",
+        q2: "?",
+        q3: "/",
+        q4: "."
+    },
+    id: "Shift2"
+}
+];
+const row6 = [{
+    name: "Ctrl",
+    type: "default-key center",
+    id: "Ctrl1"
+},
+{
+    name: "Fn",
+    type: "default-key center"
+},
+{
+    name: "Win",
+    type: "default-key center"
+},
+
+{
+    name: "Alt",
+    type: "default-key center",
+    id: "Alt1"
+},
+{
+    name: "Space",
+    type: "default-key center"
+},
+{
+    name: "Alt",
+    type: "default-key center",
+    id: "Alt2"
+},
+{
+    name: "Ctrl",
+    type: "default-key center",
+    id: "Ctrl2"
+},
+{
+    name: "Left",
+},
+{
+    name: "up-down",
+    type: "default-key center",
+},
+{
+    name: "Right"
+}
+
+];
+
+const handleQuadrants = (quadrants) => {
+    return Object.keys(quadrants).map((key) => (
+        <div className={key} key={uuidv4()}>{quadrants[key]}</div>
+    ));
+}
+
+/////////////////////////////////
+
+
+
+//   const [change, setChange] =useEffect();
+//   const funcChange = ()=>{
+//   setChange(
+//     {color: black}
+//   );
+//   }
+
+
+export const Keyboard = () => {
+    const [myRow, setRow] = useState(row3);
+
+    function setStyle() {
+        row3[0].style = true;
+        setRow(row3);
+    }
+
+    //create a synth and connect it to the main output (your speakers)
+    const synth = new Tone.Synth().toDestination();
+
+    //play a middle 'C' for the duration of an 8th note
+
+
+    document.addEventListener('keydown', (event) => {
+        const keyName = event.key;
+        console.log(event.key);
+        if (event.key === "Tab") {
+            setStyle();
+            console.log(myRow);
+
+            synth.triggerAttackRelease("C4", "8n");
+            event.preventDefault();
+        }
+
+    }, false);
+
+    return (
+        <div className='keyboard'>
+            <div className="row" id='functions'>
+                {
+                    row1.map((key) => (
+                        <div className="default-key center" id={key} key={key}>{key}</div>
+                    ))
+                }
+            </div>
+            <div className="row" id='numbers'>
+
+                {
+                    row2.map((key) => (
+                        <div className="default-key center" id={key} key={key}>{key}</div>
+                    ))
+                }
+
             </div>
             <div className="row">
-            
-                <div className="default-key center" id='Ctrl1'>Ctrl</div>
-                <div className="default-key center" id='Fn'>Fn</div> 
-                <div className="default-key center" id='Win'>Win</div>  
-                <div className="default-key center" id='Alt1'>Alt</div>
-                <div className="default-key center" id='Space'></div> 
-                <div className="default-key center" id='Alt2'>Alt</div>
-                <div className="default-key center" id='Ctrl2'>Ctrl</div>
-                <div className="default-key center" id='Left'>&#8592;</div>   
-                <div className="default-key center" id='up-down'>
-                    <div id='up'>&#8593;</div>
-                    <div id='down'>&#8595;</div>
-                </div>
-                <div className="default-key center" id='Right'>&#8594;</div>   
-            
-                   
-            </div>    
-        <div></div>
+                {
+                    myRow.map((el) => (
+                        <div className={`${el.type} ${el.style ? "anim" : ""}`} id={el.id ? el.id : el.name} key={el.id ? el.id : el.name} >
+                            {
+                                el.type === "default-key quadrant" ?
+                                    <>
+                                        {
+                                            handleQuadrants(el.quadrants)
+                                        }
+                                    </> : <>{el.name}</>
+                            }
+                        </div>
+                    ))
+                }
+            </div>
+            <div className="row">
+                {
+                    row4.map((el) => (
+                        <div className={el.type} id={el.id ? el.id : el.name} key={el.id ? el.id : el.name}  >
+                            {
+                                el.type === "default-key quadrant" ?
+                                    <>
+                                        {
+                                            handleQuadrants(el.quadrants)
+                                        }
+                                    </> : <>{el.name}</>
+                            }
+                        </div>
+                    ))
+                }
+            </div>
+            <div className="row">
+
+                {
+                    row5.map((el) => (
+                        <div className={el.type} id={el.id ? el.id : el.name} key={el.id ? el.id : el.name} >
+                            {
+                                el.type === "default-key quadrant" ?
+                                    <>
+                                        {
+                                            handleQuadrants(el.quadrants)
+                                        }
+                                    </> : <>{el.name}</>
+                            }
+                        </div>
+                    ))
+                }
+
+
+            </div>
+            <div className="row">
+                {
+                    row6.map((el) => (
+                        <div className={el.type} id={el.id ? el.id : el.name} key={el.id ? el.id : el.name} >
+                            {
+                                el.type === "default-key quadrant" ?
+                                    <>
+                                        {
+                                            handleQuadrants(el.quadrants)
+                                        }
+                                    </>
+                                    :
+                                    el.name === "up-down" ?
+                                        <>
+                                            <div id='up'>&#8593;</div>
+                                            <div id='down'>&#8595;</div>
+                                        </>
+                                        :
+                                        el.name === "Left" ?
+                                            <div className="default-key center" id='Left'>&#8592;</div>
+                                            :
+                                            el.name === "Right" ?
+                                                <div className="default-key center" id='Right'>&#8594;</div>
+                                                :
+                                                <>{el.name}</>
+                            }
+                        </div>
+                    ))
+                }
+
+
+            </div>
+            <div></div>
         </div>
     );
 }
