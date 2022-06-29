@@ -30,10 +30,12 @@ export const Main = ()=>{
                 <div className='basic'>                   
                 <div className='play-block'>
                      <h1>Basic</h1>
+                      <Link to="/instruction" className='text-link'>
                      <button className='play-basic-win'>
-                     <Link to="/play" className='text-link'>Play</Link>
+                    Play
                         
                         </button>
+                        </Link>
                 </div>
                 
                 <h4>Aliquam erat volutpat. Quisque sed porta massa. Suspendisse hendrerit finibus lectus, vel interdum tortor iaculis ut. Ut malesuada massa vitae augue condimentum sagittis. Quisque id neque sit amet arcu tristique volutpat scelerisque sed felis. Nam auctor consectetur arcu ac efficitur.</h4>

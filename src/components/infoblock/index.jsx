@@ -2,8 +2,7 @@
 export const Infoblock = () => {
   return (
     <div className="infoblock">
-    <h3>Ответить R</h3>
-  
+    К предыдущему сообщению в открытой цепочке
     </div>
   )
 }

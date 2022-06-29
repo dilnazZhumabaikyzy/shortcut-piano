@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 body{
    background: #FC5C7D;  /* fallback for old browsers */
    background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -115,7 +115,8 @@ html{
 }
 .info h1{
   font-size: 50px;
-  font-weight: 400;
+  font-weight: 200;
+
 }
 
 .basic {
@@ -163,15 +164,24 @@ html{
 }
 
 .infoblock{
-  background-color: rgba(95, 255, 202, 0.383);
+  font-family: 'Playfair Display', serif;
+  /* font-family: 'Poppins', sans-serif; */
+  font-size: 2em;
+  font-weight: 500;
+  border: solid 2px;
+  background-color: rgba(131, 130, 163, 0.281);
   width: 70%;
   height: 20vh;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 2rem;
+  border-radius: 1rem;
   flex-direction: column;
+  transition: all 0.3s linear;
+}
+.infoblock:hover{
+ background-color: rgba(7, 255, 172, 0.329);
 }
 .text-link{
   text-decoration: none;
@@ -189,4 +199,54 @@ html{
 .text-link:active{
   text-decoration: none;
   color: black;
+}
+.card{
+   /* font-family: 'Playfair Display', serif; */
+   font-size: 20px;
+   font-weight: 600;
+  padding: 1.5rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  background-color: #ff00c365; 
+  display: flex;
+  transition: all 1s linear;
+}
+.card:hover{
+  background-color: #009FFF;  /* fallback for old browsers */
+ }
+ .description{
+  width: 80%;
+ }
+.shortcuts-block{
+  display: flex;
+} 
+.keyStyle{
+  border: solid 3px #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 15px;
+}
+.intruction-cards{
+  padding-bottom: 5%;
+}
+.instruction-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.instruction-header button{
+  padding: 10px 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #FC5C7D;
+  transition: all 0.2s linear;
+}
+.instruction-header button:hover{
+  color:#fff;
+  background-color: #009dff;;
 }
