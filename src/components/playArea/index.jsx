@@ -4,7 +4,7 @@ import { Infoblock } from "../infoblock";
 export const PlayArea = () => {
   return (
     <div className="field">
-      <Infoblock />
+      <Infoblock/>
       <Keyboard />
     </div>
   );

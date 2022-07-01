@@ -2,8 +2,12 @@ import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './index.css';
+import audioPath from '../../assets/sounds/mixkit-losing-bleeps-2026.wav';
+
 
 import * as Tone from 'tone';
+// const audioTune = new Audio(audioPath);
+const audioTune = new Audio(audioPath);
 // create the piano and load 5 velocity steps
 
 
@@ -738,6 +742,9 @@ const handleQuadrants = (quadrants) => {
 
 
 export const Keyboard = () => {
+    useEffect(() => {
+        audioTune.load();
+      }, []);
     
     const [rowS1, setRowS1] = useState(row1);
     const [rowS2, setRowS2] = useState(row2);
@@ -814,16 +821,16 @@ export const Keyboard = () => {
             event.preventDefault();
             const keycode = event.keyCode;
             const keyname = event.code;
-            console.log("keydown ",keycode, " ", keyname);
+            // console.log("keydown ",keycode, " ", keyname);
             
             // setStyle(keycode);
-            synth.triggerAttackRelease("C4", "8n");
+            // synth.triggerAttackRelease("C4", "8n");
 
 
             const res = findKey(keycode,keyname);
-            console.log(res);
+            // console.log(res);
             const [row, number, index] = res; 
-            console.log(row," ",number," ",index);
+         //   console.log(row," ",number," ",index);
             setStyle(row, number, index);
             // keyboard.forEach(row => {
             //     const res = row.findIndex(content => {
@@ -841,18 +848,20 @@ export const Keyboard = () => {
             //      }
             //      num++;
             //  }); 
+            handleOrder(keycode);
+        
         });   
         document.addEventListener('keyup', (event) => {     
             event.preventDefault();  
             const keycode = event.keyCode;
             const keyname = event.code;
-                console.log("keyup ",event.keyCode);     
+                // console.log("keyup ",event.keyCode);     
                    
                 
                 const res = findKey(keycode,  keyname);
-                console.log(res);
+                // console.log(res);
                 const [row, number, index] = res; 
-                console.log(row," ",number," ",index);
+                // console.log(row," ",number," ",index);
                 unsetStyle(row, number, index);
     
         }, false);      
@@ -882,6 +891,47 @@ export const Keyboard = () => {
          }
         }
     };
+
+    const hb = [
+        {code: 80,
+         isPressed:false,
+         play: "G4"
+        },
+        {code: 78,
+            isPressed:false,
+            play: "A4"
+           },
+         {code: 188,
+          isPressed:false,
+          play: "C5"
+         },
+         {code: 88,
+            isPressed:false,
+            play: "B5"
+           },       
+           
+          ];
+         let i = 0; 
+         const hbOrder = [hb[0],hb[0],hb[1],hb[0],hb[2],hb[3]]; 
+         let nowKey = hbOrder[i];
+    function handleOrder(keycode){
+        console.log("nowkey now is   ",nowKey, " ", keycode);
+        if(keycode === nowKey.code){
+            i++;
+            console.log(nowKey);
+            synth.triggerAttackRelease(nowKey.play, "8n");
+        }
+        else{
+            audioTune.play();
+            console.log("try again");
+            i=0;            
+        }
+        if(i>hbOrder.length-1){
+            console.log("songend");
+            i=0;            
+        };
+         nowKey=hbOrder[i];
+    }
 
 
     

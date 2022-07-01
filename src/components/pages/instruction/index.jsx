@@ -6,6 +6,13 @@ const shortcutsList = [
     },
     {description: "К следующему сообщению в открытой цепочке",
     keys:["N"]},
+    {description: "Переместить курсор на панель инструментов",
+    keys:[","]},
+    {description: "Выбрать цепочку писем",
+    keys:["X"]},
+    {description: "Выбрать одну из пометок",
+    keys:["S"]},
+    
     {description: "К главному окну",
     keys:["Shift","Esc"]},
     {description: "К последнему чату или окну создания сообщения",
@@ -32,14 +39,21 @@ const shortcutsList = [
     // keys:["",],}
     
 ];
+
+const currentCommands = shortcutsList.slice(0,5);
 export const Instruction = ()=>{
   return (
     <>
     <div className='container'>
       <Header></Header>
       <div className="instruction-header">
-          <h1>Remember this hotkeys</h1>
-          <Link to="/play" className='text-link'>
+          <h1>Remember  hotkeys</h1>
+          <Link to = "/play"
+        //    to={{
+        //     pathname:"/play",
+        //     state: "something"
+        //   }}
+           className='text-link'>
                      <button>
                     Go
                     </button>
@@ -48,7 +62,7 @@ export const Instruction = ()=>{
     
         <div className="intruction-cards">
             {
-                shortcutsList.slice(0,5).map((el)=>(
+                currentCommands.map((el)=>(
                     <div className="card">
                         <div className="description"> {el.description}
                         </div>
