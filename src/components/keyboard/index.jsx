@@ -1,11 +1,16 @@
 import { keyboard } from '@testing-library/user-event/dist/keyboard';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './index.css';
 import audioPath from '../../assets/sounds/mixkit-losing-bleeps-2026.wav';
-
-
 import * as Tone from 'tone';
+
+import { ProgressContext } from '../playArea';
+
+
+
+
+
 // const audioTune = new Audio(audioPath);
 const audioTune = new Audio(audioPath);
 // create the piano and load 5 velocity steps
@@ -721,7 +726,7 @@ const row6 = [{
     code: 39
 }
 ];
-
+/////////////////////////////////
 
 const handleQuadrants = (quadrants) => {
     return Object.keys(quadrants).map((key) => (
@@ -730,16 +735,6 @@ const handleQuadrants = (quadrants) => {
 }
 
 /////////////////////////////////
-
-
-
-//   const [change, setChange] =useEffect();
-//   const funcChange = ()=>{
-//   setChange(
-//     {color: black}
-//   );
-//   }
-
 
 export const Keyboard = () => {
     useEffect(() => {
@@ -911,9 +906,18 @@ export const Keyboard = () => {
            },       
            
           ];
-         let i = 0; 
+      
+       
+       
+       const { n, setN } = useContext(ProgressContext);
+
+       
+       let i = 0;
+         const order =[{indexOrder: 0, id: 0}, {indexOrder: 0, id: 1}, {indexOrder: 1, id: 2}, {indexOrder: 0, id: 3}, {indexOrder: 2, id: 4}, {indexOrder: 3, id: 5}];
          const hbOrder = [hb[0],hb[0],hb[1],hb[0],hb[2],hb[3]]; 
-         let nowKey = hbOrder[i];
+         console.log(order[i]);
+         let nowKey = hb[order[i].indexOrder];
+         
     function handleOrder(keycode){
         console.log("nowkey now is   ",nowKey, " ", keycode);
         if(keycode === nowKey.code){
@@ -930,9 +934,11 @@ export const Keyboard = () => {
             console.log("songend");
             i=0;            
         };
-         nowKey=hbOrder[i];
+         nowKey= hb[order[i].indexOrder];
+         
+         setN(order[i]);
     }
-
+    
 
     
 

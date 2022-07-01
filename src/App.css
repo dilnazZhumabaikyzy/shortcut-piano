@@ -2,7 +2,7 @@
 body{
    background: #FC5C7D;  /* fallback for old browsers */
    background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
+   background: -webkit-linear-gradient(180deg, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
   /* background-image: url('./assets/images/luke-chesser-IGtutkXikuc-unsplash.jpg'); */
    font-family: 'Poppins', sans-serif;
     color: #fff;
@@ -249,4 +249,14 @@ html{
 .instruction-header button:hover{
   color:#fff;
   background-color: #009dff;;
+}
+
+.testStyle {
+  opacity: 0;
+  background-color: #FC5C7D;
+  transition: all 0.5s linear;
+}
+.default{
+  opacity: 1;
+  transition: all 0.25s linear;
 }

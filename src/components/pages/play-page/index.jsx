@@ -6,12 +6,13 @@ import {Footer} from '../../footer';
 import {PlayArea} from '../../playArea';
 
 
-function Play() {
+function Play(props) {
+  const currentCommands = props.currentCommands;
   return (
   <>
     <div className='container'>
       <Header></Header>
-      <PlayArea></PlayArea>      
+      <PlayArea currentCommands = {currentCommands}></PlayArea>      
      </div>
       {/* <Footer></Footer> */}
   </>

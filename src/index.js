@@ -6,54 +6,28 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Play  from './components/pages/play-page';
 import { Instruction } from './components/pages/instruction';
-const shortcutsList = [
-  {description: "К предыдущему сообщению в открытой цепочке",
-  keys:["P"],
-  },
-  {description: "К следующему сообщению в открытой цепочке",
-  keys:["N"]},
-  {description: "Переместить курсор на панель инструментов",
-  keys:[","]},
-  {description: "Выбрать цепочку писем",
-  keys:["X"]},
-  {description: "Выбрать одну из пометок",
-  keys:["S"]},
-  
-  {description: "К главному окну",
-  keys:["Shift","Esc"]},
-  {description: "К последнему чату или окну создания сообщения",
-  keys:["Esc"]},
-  {description: "К следующему чату или окну создания сообщения",
-  keys:["Ctrl", "."]},
-  {description: "К предыдущему чату или окну создания сообщения",
-  keys:["Ctrl",","]},
-  {description: "Открыть дополнительный адрес отправителя",
-  keys:["Ctrl", "Shift", "F"]},
-  {description: "Отправить",
-  keys:["Ctrl", "Ввод"]},
-  {description: "Добавить копию",
-  keys:["Ctrl","Shift","C"]},
-  {description: "Добавить скрытую копию",
-  keys:["Ctrl","Shift","C"]},
-  // {description: "",
-  // keys:["",],}
-  // {description: "",
-  // keys:["",],}
-  // {description: "",
-  // keys:["",],}
-  // {description: "",
-  // keys:["",],}
-  
-]; 
+
+import { shortcutsList } from './components/modules';
+import { useState, createContext, useContext } from "react";
+
+export const UserContext = React.createContext();
+
+let userProgress = 5;
+const currentCommands = shortcutsList.slice(0,userProgress);
+const currentI = 0;
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <UserContext.Provider value={currentCommands}>
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<App/>} />
       <Route path='/play' element={<Play/>} />
-      <Route path='/instruction' element={<Instruction/>} />
+      <Route path='/instruction' element={<Instruction currentCommands ={currentCommands}/>} />
     </Routes>
   </BrowserRouter>
+  </UserContext.Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
