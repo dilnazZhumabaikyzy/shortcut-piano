@@ -9,10 +9,11 @@ import { Instruction } from './components/pages/instruction';
 
 import { shortcutsList } from './components/modules';
 import { useState, createContext, useContext } from "react";
+import { Compositions } from './components/pages/compositions';
 
 export const UserContext = React.createContext();
 
-let userProgress = 5;
+let userProgress = 8;
 const currentCommands = shortcutsList.slice(0,userProgress);
 const currentI = 0;
 
@@ -24,6 +25,7 @@ root.render(
     <Routes>
       <Route path='/' element={<App/>} />
       <Route path='/play' element={<Play/>} />
+      <Route path='/compositions' element={<Compositions/>} />
       <Route path='/instruction' element={<Instruction currentCommands ={currentCommands}/>} />
     </Routes>
   </BrowserRouter>

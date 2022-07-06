@@ -10,11 +10,15 @@ const shortcutsList = [
     keys:["X"]},
     {description: "Выбрать одну из пометок",
     keys:["S"]},
-    
-    {description: "К главному окну",
-    keys:["Shift","Esc"]},
     {description: "К последнему чату или окну создания сообщения",
     keys:["Esc"]},
+    {description: "Архивировать",
+    keys:["E"]},
+    {description: "Игнорировать цепочку писем",
+    keys:["M"]},
+    {description: "К главному окну",
+    keys:["Shift","Esc"]},
+    
     {description: "К следующему чату или окну создания сообщения",
     keys:["Ctrl", "."]},
     {description: "К предыдущему чату или окну создания сообщения",

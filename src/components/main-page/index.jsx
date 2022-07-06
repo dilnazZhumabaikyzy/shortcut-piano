@@ -1,4 +1,5 @@
 import winLogo from '../../assets/images/logo-windows-13475.png';
+import gmailLogo from '../../assets/images/logo-gmail.png';
 import { Link } from "react-router-dom";
 
 export const Main = ()=>{
@@ -15,22 +16,30 @@ export const Main = ()=>{
             </div>
             <div className="apps">
             <div className='cards'>
+               <img src={gmailLogo} alt="Gmail"/> 
+               <h4>GMail</h4> 
+            </div>
+            {/* <div className='cards'>
                <img src={winLogo} alt="Windows OS"/> 
                <h4>Windows 11/10/8</h4> 
-            </div>
+            </div> */}
             </div>
         </div>
         <div className="wrapper content">
          <div className='app'>
-            <div className='cards'>
+            {/* <div className='cards'>
                <img src={winLogo} alt="Windows OS"/> 
                <h4>Windows 11/10/8</h4> 
+            </div> */}
+              <div className='cards'>
+               <img src={gmailLogo} alt="GMail"/> 
+               <h4>GMail</h4> 
             </div>
             <div className='info'>
                 <div className='basic'>                   
                 <div className='play-block'>
                      <h1>Basic</h1>
-                      <Link to="/instruction" className='text-link'>
+                      <Link to="/compositions" className='text-link'>
                      <button className='play-basic-win'>
                     Play
                         

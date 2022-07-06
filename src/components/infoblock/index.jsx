@@ -19,11 +19,11 @@ export const Infoblock = () => {
       setTimeout((
       )=>{ setStyle("default");}, 500);
   }
-  
+  const [isMouseOver, setMouse] = useState(false);
   return (
-    <div className= {`infoblock ${style}`}
+    <div className= {`infoblock ${style}`} onMouseOver = {()=>setMouse(true)} onMouseOut = {()=>setMouse(false)}
     >
-     {currentCommands[n.indexOrder].description}    
+     {isMouseOver ? currentCommands[n.indexOrder].keys[0] : currentCommands[n.indexOrder].description}    
     </div>
   )
 }

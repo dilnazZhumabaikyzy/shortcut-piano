@@ -29,7 +29,7 @@
     margin: 0.3em;
     position: relative;
     cursor: pointer;
-    /* transition: all 0.3s linear; */
+    transition: all 0.3s linear;
 }
 
 
@@ -135,6 +135,7 @@
 }
 
 .anim {
-    transform: translate3d(0px, -10px, -250px);
+    transform: translate3d(0px, -50px, -250px);
     background-color: rgba(137, 43, 226, 0.422);
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }

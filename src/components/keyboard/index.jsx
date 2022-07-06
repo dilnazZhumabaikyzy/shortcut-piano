@@ -816,7 +816,7 @@ export const Keyboard = () => {
             event.preventDefault();
             const keycode = event.keyCode;
             const keyname = event.code;
-            // console.log("keydown ",keycode, " ", keyname);
+            console.log("keydown ",keycode, " ", keyname);
             
             // setStyle(keycode);
             // synth.triggerAttackRelease("C4", "8n");
@@ -851,8 +851,6 @@ export const Keyboard = () => {
             const keycode = event.keyCode;
             const keyname = event.code;
                 // console.log("keyup ",event.keyCode);     
-                   
-                
                 const res = findKey(keycode,  keyname);
                 // console.log(res);
                 const [row, number, index] = res; 
@@ -889,23 +887,30 @@ export const Keyboard = () => {
 
     const hb = [
         {code: 80,
-         isPressed:false,
          play: "G4"
         },
         {code: 78,
-            isPressed:false,
-            play: "A4"
-           },
-         {code: 188,
-          isPressed:false,
-          play: "C5"
-         },
-         {code: 88,
-            isPressed:false,
-            play: "B5"
-           },       
-           
-          ];
+        play: "A4"
+        },
+        {code: 188,
+         play: "C5"
+        },
+        {code: 88,
+        play: "B4"
+        },   
+        {code: 83,
+        play: "D5"
+        },
+        {code: 27,
+        play: "E5"
+        },           
+        {code: 69,
+        play: "F5"
+        },
+        {code: 77,
+        play: "A5"
+        }
+        ];
       
        
        
@@ -913,21 +918,53 @@ export const Keyboard = () => {
 
        
        let i = 0;
-         const order =[{indexOrder: 0, id: 0}, {indexOrder: 0, id: 1}, {indexOrder: 1, id: 2}, {indexOrder: 0, id: 3}, {indexOrder: 2, id: 4}, {indexOrder: 3, id: 5}];
-         const hbOrder = [hb[0],hb[0],hb[1],hb[0],hb[2],hb[3]]; 
+         const order =[{indexOrder: 0, id: 0},
+                       {indexOrder: 0, id: 1}, 
+                       {indexOrder: 1, id: 2}, 
+                       {indexOrder: 0, id: 3},
+                       {indexOrder: 2, id: 4}, 
+                       {indexOrder: 3, id: 5},
+                       {indexOrder: 0, id: 6},
+                       {indexOrder: 1, id: 7},
+                       {indexOrder: 0, id: 8},
+                       {indexOrder: 4, id: 9},
+                       {indexOrder: 2, id: 10},
+                       {indexOrder: 3, id: 11},
+                       {indexOrder: 0, id: 12},
+                       {indexOrder: 0, id: 13},
+                       {indexOrder: 7, id: 14},
+                       {indexOrder: 5, id: 15},
+                       {indexOrder: 2, id: 16},
+                       {indexOrder: 3, id: 17},
+                       {indexOrder: 1, id: 18},
+                       {indexOrder: 6, id: 19},
+                       {indexOrder: 6, id: 20},
+                       {indexOrder: 5, id: 21},
+                       {indexOrder: 2, id: 22},
+                       {indexOrder: 4, id: 23},
+                       {indexOrder: 2, id: 24},
+                       {indexOrder: 2, id: 24},
+                       ];
+         const hbOrder = [hb[0],hb[0],hb[1],hb[0],hb[2],hb[3],
+                          hb[0],hb[1],hb[0],hb[4],hb[2],
+                          hb[0],hb[0],hb[7],hb[5],hb[2],hb[3],
+                          hb[1],hb[6],hb[6],hb[5],hb[2],
+                          hb[4],hb[2],hb[2]]; 
          console.log(order[i]);
          let nowKey = hb[order[i].indexOrder];
          
+         const [faile, setFaile] = useState(false);
     function handleOrder(keycode){
         console.log("nowkey now is   ",nowKey, " ", keycode);
         if(keycode === nowKey.code){
+            setFaile(false);
             i++;
             console.log(nowKey);
             synth.triggerAttackRelease(nowKey.play, "8n");
         }
         else{
             audioTune.play();
-            console.log("try again");
+            setFaile(true);
             i=0;            
         }
         if(i>hbOrder.length-1){
@@ -941,8 +978,31 @@ export const Keyboard = () => {
     
 
     
+    const [comment, setComment] = useState("Wow!");
+    const [myAnimation, setAnimate] = useState("hideComment");
+    const [firstEnter, setEnterStatus] = useState(true);
+   
+    useEffect(()=>{
+        console.log("HOOIII ",n.indexOrder , " ", i);
+        faile ? setComment("Try again!"):n.indexOrder===7?setComment("Great!"):n.indexOrder===4?setComment("Good!"):setComment("Wow!");
+        if(!firstEnter)
+        animateComments();
+    },[n,faile]);
+    useEffect(()=>{
+        setEnterStatus(false);
+    },[]);
+    
+   function animateComments(){
+      setAnimate("");
 
-    return (
+       setTimeout((
+        )=>{ setAnimate("hideComment");}, 320);
+   }
+    
+    return (<>
+        <div className= {`comments ${myAnimation}`}>
+               {comment}
+        </div>
         <div className='keyboard'>
             <div className="row" id='functions'>
                 {
@@ -955,7 +1015,7 @@ export const Keyboard = () => {
 
             {
                     rowS2.map((el) => (
-                        <div className={`${el.type} ${el.style ? "anim" : ""}`}  id={el.id ? el.id : el.name} key={uuidv4()} >
+                        <div className={`${el.type} ${el.style ? "anim" : ""}`}  id={el.id ? el.id : el.name} key={el.id ? el.id : el.name} >
                             {
                                 el.type === "default-key quadrant" ?
                                     <>
@@ -1054,5 +1114,6 @@ export const Keyboard = () => {
             </div>
             <div></div>
         </div>
+        </>
     );
 }

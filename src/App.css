@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&family=Forum&display=swap');
 body{
    background: #FC5C7D;  /* fallback for old browsers */
    background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -164,24 +164,24 @@ html{
 }
 
 .infoblock{
-  font-family: 'Playfair Display', serif;
+  font-family: 'Forum', cursive;
   /* font-family: 'Poppins', sans-serif; */
   font-size: 2em;
   font-weight: 500;
   border: solid 2px;
-  background-color: rgba(131, 130, 163, 0.281);
+  /* background-color: rgba(131, 130, 163, 0.281); */
+  border-radius: 1rem;
   width: 70%;
   height: 20vh;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 1rem;
   flex-direction: column;
   transition: all 0.3s linear;
 }
 .infoblock:hover{
- background-color: rgba(7, 255, 172, 0.329);
+ background-color: rgba(255, 7, 197, 0.172);
 }
 .text-link{
   text-decoration: none;
@@ -210,6 +210,7 @@ html{
   background-color: #ff00c365; 
   display: flex;
   transition: all 1s linear;
+  cursor: pointer;
 }
 .card:hover{
   background-color: #009FFF;  /* fallback for old browsers */
@@ -235,7 +236,7 @@ html{
   justify-content: space-between;
   align-items: center;
 }
-.instruction-header button{
+.instruction-header button, .composition button{
   padding: 10px 50px;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
@@ -246,7 +247,7 @@ html{
   color: #FC5C7D;
   transition: all 0.2s linear;
 }
-.instruction-header button:hover{
+.instruction-header button:hover, .composition button:hover{
   color:#fff;
   background-color: #009dff;;
 }
@@ -254,9 +255,139 @@ html{
 .testStyle {
   opacity: 0;
   background-color: #FC5C7D;
+ 
+  padding: 10px;
   transition: all 0.5s linear;
 }
 .default{
   opacity: 1;
   transition: all 0.25s linear;
 }
+.details{
+  width: 100%;
+  height: 100vh;
+  background: #5757576e;
+  position: fixed;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details-inner{
+  background-color: #ab81de;
+  width: 70%;
+  height: 70vh;
+  border-radius: 3em;
+  padding: 25px 40px;
+  overflow: hidden;
+  z-index: 99999;
+}
+.details-inner img{
+  margin-left: 30%;
+  height: 400px;
+}
+
+
+.hide {
+  display: none;
+}
+
+p {
+  font-size: 20px;
+}
+
+.comments{
+  z-index: 9999999;
+  font-size: 7em;
+  font-weight: 700;
+  width: 100%;
+  display: flex;
+  margin-top: 15%;
+  justify-content: center;
+  align-items:center;
+  position: absolute;
+  transition: all 0.15s ease-in;
+  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+.hideComment{
+  font-size: 6em;
+  opacity: 0;
+}
+.composition{
+  border: solid 2px #00bfff;
+  border-radius: 3em;
+  padding: 2em;
+  overflow: hidden;
+  position: relative;z-index: 2;
+}
+.composition .background{
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;  
+  transition: all 0.8s linear;
+}
+.line{
+  position: absolute;
+  top: 0;
+  transform: rotate(-41deg); 
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.087);
+}
+.background.transition-line{
+  left: 200%;
+}
+
+.background div:nth-child(1){
+  left: 5%;
+}
+
+.background div:nth-child(2){
+  left: 28%;
+  height: 10%;
+}
+.background div:nth-child(3){
+  left: 45%;
+  height: 20%;
+}
+.composition{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1%;
+}
+.composition .logo img{
+  width: 140px;
+  height: 140px;
+}
+.composition .title {
+  color: rgb(252, 252, 123);
+  
+  
+  font-size: 2em;
+  font-weight: 700;
+}
+.composition .text {
+  width: 100%;
+  margin-left: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+.text .progress{
+  margin-top: 0.5em;
+  font-size: 2em;
+}
+ .progress i{
+  margin:  0 0.1em;
+  color: rgb(255, 247, 87);
+ }
+ .composition .playButton{
+  z-index: 99999999;
+ }
+
+ .composition-list{
+  padding: 5% 0;
+ }
