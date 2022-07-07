@@ -66,6 +66,12 @@ html{
 }
 .cards img {
   width: 120px;
+  height: 100%;
+}
+
+.app .cards img {
+  width: 150px;
+  height: auto;
 }
 
 .apps{
@@ -102,6 +108,7 @@ html{
   display: flex;
   background-color: rgba(255, 255, 255, 0.127);
   border-radius:15px;
+  margin-bottom: 8%;
 }
 .app .cards{
   width: 30%;
@@ -155,8 +162,8 @@ html{
    margin: 1rem;
 }
 .wrapper.content{
+  flex-direction: column;
   margin-top: 10%;
-  margin-bottom: 15%;
 }
 .field{
  display: flex;
@@ -318,7 +325,8 @@ p {
   border-radius: 3em;
   padding: 2em;
   overflow: hidden;
-  position: relative;z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 .composition .background{
   z-index: 0;
@@ -327,7 +335,7 @@ p {
   height: 100%;
   top: 0;
   left: 0;  
-  transition: all 0.8s linear;
+  transition: all 0.4s linear;
 }
 .line{
   position: absolute;
@@ -338,9 +346,9 @@ p {
   background-color: rgba(255, 255, 255, 0.087);
 }
 .background.transition-line{
-  left: 200%;
+ /* transition: all 0.8s linear; */
+  left: 100%;
 }
-
 .background div:nth-child(1){
   left: 5%;
 }
@@ -357,7 +365,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
 }
 .composition .logo img{
   width: 140px;
@@ -391,3 +399,43 @@ p {
  .composition-list{
   padding: 5% 0;
  }
+
+ .locked { 
+  z-index: 10;
+  border-color: rgb(190, 190, 190);
+  color: rgb(190, 190, 190);
+  background-color: rgba(118, 118, 118, 0.309);
+ }
+
+ .locked::after{
+  position: absolute;
+  content: url('./assets/images/locked2.png');
+ }
+
+ .locked::before{
+  color: #fff;
+  font-size: 1.5em;
+  /* font-weight: 500; */
+  position: absolute;
+  content: "Get 500 points to unlock";
+  bottom: 10%;
+
+ }
+  .locked .title{
+    color: rgb(190, 190, 190);
+  }
+
+  .locked button{
+    border-color: gray;
+    color: rgb(190, 190, 190);
+    background-color: rgba(118, 118, 118, 0.785);
+
+  }
+  .locked i{
+    color: rgb(190, 190, 190);
+  }
+  .composition.locked .playButton {
+    z-index: 0;
+    pointer-events: none;
+  }
+

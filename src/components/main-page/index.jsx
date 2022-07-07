@@ -1,50 +1,50 @@
 import winLogo from '../../assets/images/logo-windows-13475.png';
+import vscodeLogo from '../../assets/images/vscode.svg';
 import gmailLogo from '../../assets/images/logo-gmail.png';
 import { Link } from "react-router-dom";
-
+import { UserContext } from '../../routing';
+import { useContext } from 'react';
+  
 export const Main = ()=>{
+    const  {gameStatus, setGameStatus} = useContext(UserContext);
     return(
         <>
         <div className="wrapper">
             <div className='textContainer'>
             <h1>
-                Shortcut Tiles 
+                Shortcut Piano 
             </h1>
             <h3>
-                Learn Shortcuts with game
+                Learn Shortcuts Game
             </h3>                
             </div>
             <div className="apps">
             <div className='cards'>
                <img src={gmailLogo} alt="Gmail"/> 
-               <h4>GMail</h4> 
+               <h4>Gmail</h4> 
             </div>
-            {/* <div className='cards'>
-               <img src={winLogo} alt="Windows OS"/> 
-               <h4>Windows 11/10/8</h4> 
-            </div> */}
+            <div className='cards'>
+               <img src={vscodeLogo} alt="VScode"/> 
+               <h4>Vscode</h4> 
+               </div>
             </div>
         </div>
         <div className="wrapper content">
          <div className='app'>
-            {/* <div className='cards'>
-               <img src={winLogo} alt="Windows OS"/> 
-               <h4>Windows 11/10/8</h4> 
-            </div> */}
-              <div className='cards'>
+               <div className='cards'>
                <img src={gmailLogo} alt="GMail"/> 
-               <h4>GMail</h4> 
-            </div>
+               <h3>Gmail</h3> 
+               </div>
+
             <div className='info'>
                 <div className='basic'>                   
                 <div className='play-block'>
                      <h1>Basic</h1>
-                      <Link to="/compositions" className='text-link'>
-                     <button className='play-basic-win'>
-                    Play
-                        
-                        </button>
-                        </Link>
+                     <Link to="/compositions/basic" className='text-link'>
+                     <button className='play-basic-win' onClick={()=>setGameStatus("basic")}>
+                      Play                        
+                     </button>
+                     </Link>
                 </div>
                 
                 <h4>Aliquam erat volutpat. Quisque sed porta massa. Suspendisse hendrerit finibus lectus, vel interdum tortor iaculis ut. Ut malesuada massa vitae augue condimentum sagittis. Quisque id neque sit amet arcu tristique volutpat scelerisque sed felis. Nam auctor consectetur arcu ac efficitur.</h4>
@@ -54,7 +54,41 @@ export const Main = ()=>{
                 <div className='advanced'>
                     <div className='play-block'>
                                      <h1>Advanced</h1>
-                                     <button className='play-advanced-win'>Play</button>
+                                     <Link to="/compositions/advanced" className='text-link'>
+                                     <button className='play-advanced-win'  onClick={()=>setGameStatus("advanced")}>Play</button>
+                     </Link>
+                    </div>   
+                <h4>Donec nec lorem id nunc dapibus pellentesque sed scelerisque nisl. In scelerisque iaculis mi, vel dapibus ex. Nunc vitae nunc scelerisque, porttitor ex quis, sagittis felis. Ut porttitor nulla non dolor luctus, eu ultricies orci condimentum.</h4>
+                </div>
+            </div>
+         </div>
+         <div className='app'>
+               <div className='cards'>
+               <img src={vscodeLogo} alt="Vscode"/> 
+               <h3>Vscode</h3> 
+               </div>
+
+            <div className='info'>
+                <div className='basic'>                   
+                <div className='play-block'>
+                     <h1>Basic</h1>
+                     <Link to="/compositions/basic" className='text-link'>
+                     <button className='play-basic-win' onClick={()=>setGameStatus("basic")}>
+                      Play                        
+                     </button>
+                     </Link>
+                </div>
+                
+                <h4>Aliquam erat volutpat. Quisque sed porta massa. Suspendisse hendrerit finibus lectus, vel interdum tortor iaculis ut. Ut malesuada massa vitae augue condimentum sagittis. Quisque id neque sit amet arcu tristique volutpat scelerisque sed felis. Nam auctor consectetur arcu ac efficitur.</h4>
+                     
+        
+                </div>
+                <div className='advanced'>
+                    <div className='play-block'>
+                                     <h1>Advanced</h1>
+                                     <Link to="/compositions/advanced" className='text-link'>
+                                     <button className='play-advanced-win'  onClick={()=>setGameStatus("advanced")}>Play</button>
+                     </Link>
                     </div>   
                 <h4>Donec nec lorem id nunc dapibus pellentesque sed scelerisque nisl. In scelerisque iaculis mi, vel dapibus ex. Nunc vitae nunc scelerisque, porttitor ex quis, sagittis felis. Ut porttitor nulla non dolor luctus, eu ultricies orci condimentum.</h4>
                 </div>

@@ -1,9 +1,10 @@
-import { UserContext } from "../..";
+import { UserContext } from "../../routing";
 import { useState, createContext, useContext, useEffect } from "react";
 import { ProgressContext } from "../playArea";
 
 export const Infoblock = () => {
-  const currentCommands = useContext(UserContext);
+  const {currentCommands} = useContext(UserContext);
+  console.log(useContext(UserContext));
   const {n} = useContext(ProgressContext);
   // console.log(n);
   const [style, setStyle] = useState("default");
@@ -23,7 +24,7 @@ export const Infoblock = () => {
   return (
     <div className= {`infoblock ${style}`} onMouseOver = {()=>setMouse(true)} onMouseOut = {()=>setMouse(false)}
     >
-     {isMouseOver ? currentCommands[n.indexOrder].keys[0] : currentCommands[n.indexOrder].description}    
+     {isMouseOver ? currentCommands[n.name].keys[0] : currentCommands[n.name].description}    
     </div>
   )
 }

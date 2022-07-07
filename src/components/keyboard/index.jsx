@@ -1,4 +1,4 @@
-import { keyboard } from '@testing-library/user-event/dist/keyboard';
+// import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import { useEffect, useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './index.css';
@@ -7,24 +7,7 @@ import * as Tone from 'tone';
 
 import { ProgressContext } from '../playArea';
 
-
-
-
-
-// const audioTune = new Audio(audioPath);
 const audioTune = new Audio(audioPath);
-// create the piano and load 5 velocity steps
-
-
-//connect it to the speaker output
-
-
-
-
-let animatingObj;
-setTimeout(() => {
-    animatingObj = document.getElementById('ak');
-}, 300);
 
 
 
@@ -739,7 +722,9 @@ const handleQuadrants = (quadrants) => {
 export const Keyboard = () => {
     useEffect(() => {
         audioTune.load();
-      }, []);
+    }, []);
+
+    const synth = new Tone.Synth().toDestination();
     
     const [rowS1, setRowS1] = useState(row1);
     const [rowS2, setRowS2] = useState(row2);
@@ -751,41 +736,10 @@ export const Keyboard = () => {
     const keyboard = [rowS1,rowS2,rowS3,rowS4,rowS5,rowS6];
 
 
-    
 
 
-    function setStyle(row, number, index) {
-        // console.log("set style");
-        // console.log(row);
-        // console.log(number);
-        // console.log(index);
-        // console.log(row[index]);
-        row[index].style = true;
-        switch(number){
-            case 1: setRowS1([...row]);
-            break;
-            case 2: setRowS2([...row]);
-            break;
-            case 3: setRowS3([...row]);
-            break;
-            case 4: setRowS4([...row]);
-            break;
-            case 5: setRowS5([...row]);
-            break;
-            case 6: setRowS6([...row]);
-            break;
-        }
-        
-        
-        
-    }
-    function unsetStyle(row, number, index) {
-        // console.log("unset style");
-        // console.log(row);
-        // console.log(number);
-        // console.log(index);
-        // console.log(row[index]);
-        row[index].style = false;
+    function setStyle(row, number, index, bool = true) {
+        row[index].style = bool;
         switch(number){
             case 1: setRowS1([...row]);
             break;
@@ -801,62 +755,26 @@ export const Keyboard = () => {
             break;
         }
     }
-
-
-    //create a synth and connect it to the main output (your speakers)
-    const synth = new Tone.Synth().toDestination();
-
-    //play a middle 'C' for the duration of an 8th note
 
     useEffect(()=>{
-        let rowK;
-        let numK;
-        let indexK;
         document.addEventListener('keydown', (event)=>{
             event.preventDefault();
             const keycode = event.keyCode;
             const keyname = event.code;
-            console.log("keydown ",keycode, " ", keyname);
-            
-            // setStyle(keycode);
-            // synth.triggerAttackRelease("C4", "8n");
-
-
+                    
             const res = findKey(keycode,keyname);
-            // console.log(res);
-            const [row, number, index] = res; 
-         //   console.log(row," ",number," ",index);
-            setStyle(row, number, index);
-            // keyboard.forEach(row => {
-            //     const res = row.findIndex(content => {
-            //           return content.code === keycode
-            //      });
-            //     //  console.log(res," ", res !== -1 );
 
-            //      if (res !== -1 ){
-            //         rowK = row;
-            //         numK = num;
-            //         indexK = res; 
-            //         setStyle(row, num,res);
-            //         num = 1; 
-            //         return;
-            //      }
-            //      num++;
-            //  }); 
-            handleOrder(keycode);
-        
+            const [row, number, index] = res; 
+            setStyle(row, number, index);
+            handleOrder(keycode);        
         });   
         document.addEventListener('keyup', (event) => {     
             event.preventDefault();  
             const keycode = event.keyCode;
-            const keyname = event.code;
-                // console.log("keyup ",event.keyCode);     
+            const keyname = event.code;          
                 const res = findKey(keycode,  keyname);
-                // console.log(res);
                 const [row, number, index] = res; 
-                // console.log(row," ",number," ",index);
-                unsetStyle(row, number, index);
-    
+                setStyle(row, number, index,false);    
         }, false);      
     }, []);
 
@@ -885,6 +803,54 @@ export const Keyboard = () => {
         }
     };
 
+    const [composition, setComposition] = useState([]);
+   
+    const {n, setN } = useContext(ProgressContext);  
+
+    let i = 0;   
+    const jb = [
+        {code: 85,
+         play: "C4", 
+         index: 0
+        },
+        {code: 75,
+        play: "A4", 
+        index: 1        
+        },
+        {code: 82,
+         play: "G4", 
+         index: 2
+        },
+        {code: 65,
+        play: "F4", 
+        index: 3
+        },  
+        {code: 70,
+         play: "D4", 
+         index: 4
+        },  
+        {code: 90,
+        play: "A#4", 
+        index: 5
+        },
+        {code: 189,
+        play: "E4", 
+        index: 6
+        },           
+        {code: 66,
+        play: "C5", 
+        index: 7
+        },
+        {code: 186,
+        play: "G5", 
+        index: 8
+        },
+        {code: 74,
+        play: "D5", 
+        index: 9
+        }
+        ];
+
     const hb = [
         {code: 80,
          play: "G4"
@@ -910,51 +876,28 @@ export const Keyboard = () => {
         {code: 77,
         play: "A5"
         }
-        ];
+        ];     
       
-       
-       
-       const { n, setN } = useContext(ProgressContext);
-
-       
-       let i = 0;
-         const order =[{indexOrder: 0, id: 0},
-                       {indexOrder: 0, id: 1}, 
-                       {indexOrder: 1, id: 2}, 
-                       {indexOrder: 0, id: 3},
-                       {indexOrder: 2, id: 4}, 
-                       {indexOrder: 3, id: 5},
-                       {indexOrder: 0, id: 6},
-                       {indexOrder: 1, id: 7},
-                       {indexOrder: 0, id: 8},
-                       {indexOrder: 4, id: 9},
-                       {indexOrder: 2, id: 10},
-                       {indexOrder: 3, id: 11},
-                       {indexOrder: 0, id: 12},
-                       {indexOrder: 0, id: 13},
-                       {indexOrder: 7, id: 14},
-                       {indexOrder: 5, id: 15},
-                       {indexOrder: 2, id: 16},
-                       {indexOrder: 3, id: 17},
-                       {indexOrder: 1, id: 18},
-                       {indexOrder: 6, id: 19},
-                       {indexOrder: 6, id: 20},
-                       {indexOrder: 5, id: 21},
-                       {indexOrder: 2, id: 22},
-                       {indexOrder: 4, id: 23},
-                       {indexOrder: 2, id: 24},
-                       {indexOrder: 2, id: 24},
-                       ];
-         const hbOrder = [hb[0],hb[0],hb[1],hb[0],hb[2],hb[3],
-                          hb[0],hb[1],hb[0],hb[4],hb[2],
-                          hb[0],hb[0],hb[7],hb[5],hb[2],hb[3],
-                          hb[1],hb[6],hb[6],hb[5],hb[2],
-                          hb[4],hb[2],hb[2]]; 
-         console.log(order[i]);
-         let nowKey = hb[order[i].indexOrder];
+    const order = [0,0,1,0,2,3,0,1,0,4,2,0,0,7,5,2,3,1,6,6,5,2,4,2,2]; 
+    const orderjb = [0,1,2,3,0,
+                     0,0,0,1,2,3,4,
+                     4,5,1,2,6,
+                     7,7,5,2,1,
+                     0,1,2,3,0,
+                     0,0,0,1,2,3,4,
+                     4,5,1,2,
+                     7,7,7,9,7,5,2,3,
+                     7,1,1,1,1,1,1,1,7,
+                     3,2,1,5,5,5,5,1,1,
+                     1,1,1,2,2,1,2,7,1,1,1,
+                     1,1,1,2,2,1,7,1,1,1,
+                     1,1,1,1,7,3];
+                         
+        let nowKey = jb[orderjb[i]];
+        
          
-         const [faile, setFaile] = useState(false);
-    function handleOrder(keycode){
+        const [faile, setFaile] = useState(false);
+        function handleOrder(keycode){
         console.log("nowkey now is   ",nowKey, " ", keycode);
         if(keycode === nowKey.code){
             setFaile(false);
@@ -967,14 +910,15 @@ export const Keyboard = () => {
             setFaile(true);
             i=0;            
         }
-        if(i>hbOrder.length-1){
+        if(i>orderjb.length-1){
             console.log("songend");
             i=0;            
         };
-         nowKey= hb[order[i].indexOrder];
+         nowKey= jb[orderjb[i]];
          
-         setN(order[i]);
+         setN({name:orderjb[i]});
     }
+
     
 
     

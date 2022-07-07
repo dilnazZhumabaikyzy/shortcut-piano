@@ -2,6 +2,7 @@ import { Header } from "../../header";
 import { Link } from "react-router-dom";
 import videojpeg from "../../../assets/images/video.jpg";
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 export const Instruction = (props)=>{
     const [detailsIsActive,setStatus] = useState(false);
@@ -21,8 +22,8 @@ export const Instruction = (props)=>{
       
       
       <Header></Header>
-      <div className="instruction-header">
-          <h1>Remember  hotkeys</h1>
+      <div className="instruction-header" >
+          <h1>Memorize these shortcuts</h1>
           <Link to = "/play"
            className='text-link'>
                      <button>
@@ -31,14 +32,14 @@ export const Instruction = (props)=>{
           </Link>
       </div>
     
-        <div className="intruction-cards">
+        <div className="intruction-cards" key = {uuidv4()}> 
             {
                 currentCommands.map((el)=>(
-                    <div className="card" onClick={()=>setStatus(true)}>
-                        <div className="description"> {el.description}
+                    <div className="card" onClick={()=>setStatus(true)}  key = {uuidv4()}>
+                        <div className="description" key = {uuidv4()}> {el.description}
                         </div>
-                        <div className="shortcuts-block"> {el.keys.map(el=>(
-                            <><div className="keyStyle"> 
+                        <div className="shortcuts-block" key = {uuidv4()}> {el.keys.map(el=>(
+                            <><div className="keyStyle"  key = {uuidv4()}> 
                                {el}
                             </div>
                             </>
