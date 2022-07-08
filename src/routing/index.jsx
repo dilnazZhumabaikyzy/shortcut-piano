@@ -13,20 +13,22 @@ import { shortcutsList } from '../modules/shortcuts';
 
 export const UserContext = createContext();
 
-let userProgress = 18;
-const currentCommands = shortcutsList.slice(8,userProgress);
-const currentI = 0;
-const compositionProps = basicGmail;
 
 
 export const MyRoutes = () => {
-    const [gameStatus,setGameStatus] = useState("basic");
+
+  const compositionProps = basicGmail;
+
+  const [gameStatus,setGameStatus] = useState("basic");
+  const [song,setSong] = useState(compositionProps[0]);
+
+  const currentCommands = shortcutsList.slice(song.section[0],song.section[1]);
     return (
-        <UserContext.Provider value={{currentCommands,gameStatus,setGameStatus}}>
+        <UserContext.Provider value={{currentCommands,gameStatus,setGameStatus,song,setSong}}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<App/>} />
-            <Route path='/play' element={<Play/>} />
+            <Route path='/play' element={<Play song = {song}/>} />
             <Route path='/compositions/basic' element={<Compositions myArray = {compositionProps} />} />
             <Route path='/compositions/advanced' element={<Compositions myArray = {compositionProps} />} />
             <Route path='/instruction' element={<Instruction currentCommands ={currentCommands}/>} />

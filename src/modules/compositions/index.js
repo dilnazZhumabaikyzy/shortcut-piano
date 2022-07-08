@@ -4,6 +4,7 @@ const basicGmail = [
      description: "8 basic commands to learn",
      score:0,
      locked: true,
+     section: [0,8],
      notes: [ {code: 80,
         play: "G4"
        },
@@ -28,12 +29,13 @@ const basicGmail = [
        {code: 77,
        play: "A5"
        }],
-       noteOrder:[0,0,1,0,2,3,0,1,0,4,2,0,0,7,5,2,3,1,6,6,5,2,4,2,2]
+       noteOrder:[0,0,1,0,2,3,0,1,0,4,2,0,0,7,5,2,3,1,6,6,5,2,4,2]
     },
      {title: "Jingle Bells",
      description: "10 basic commands to learn",
      score:0,
      locked: true,
+     section: [8,18],
      notes:[ {code: 85,
         play: "C4", 
         index: 0

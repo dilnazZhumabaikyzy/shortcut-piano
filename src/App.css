@@ -126,9 +126,9 @@ html{
 
 }
 
-.basic {
+/* .basic {
 
-}
+} */
 .basic button{
   padding: 10px 50px;
   font-family: 'Poppins', sans-serif;
@@ -138,12 +138,12 @@ html{
 
   cursor: pointer;
 }
-.play-basic-win{
+/* .play-basic-win{
   
 }
 .advanced{
  
-}
+} */
 .play-block{
   display: flex;
   align-items: center;
@@ -243,7 +243,7 @@ html{
   justify-content: space-between;
   align-items: center;
 }
-.instruction-header button, .composition button{
+.instruction-header button, .composition button, .scoreBox button{
   padding: 10px 50px;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
@@ -439,3 +439,25 @@ p {
     pointer-events: none;
   }
 
+.scoreBox {
+  
+  padding: 3%;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: #df2dff;
+  z-index: 999;
+  border-radius: 3em;
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  transition: all 0.5s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.buttons {
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}

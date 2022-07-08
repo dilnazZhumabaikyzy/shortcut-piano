@@ -7,12 +7,13 @@ import {PlayArea} from '../../playArea';
 
 
 function Play(props) {
-  const currentCommands = props.currentCommands;
+  const {song} = props;
+
   return (
   <>
     <div className='container'>
       <Header></Header>
-      <PlayArea currentCommands = {currentCommands}></PlayArea>      
+      <PlayArea song = {song}></PlayArea>      
      </div>
       {/* <Footer></Footer> */}
   </>

@@ -3,13 +3,15 @@ import { useEffect, useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './index.css';
 import audioPath from '../../assets/sounds/mixkit-losing-bleeps-2026.wav';
+import audioPathApplause from '../../assets/sounds/applause.wav';
 import * as Tone from 'tone';
 
 import { ProgressContext } from '../playArea';
+import { ShowScore } from '../showScore';
 
 const audioTune = new Audio(audioPath);
 
-
+const audioApplause = new Audio(audioPathApplause);
 
 /////////////////////////////////
 const row1 = [
@@ -719,9 +721,11 @@ const handleQuadrants = (quadrants) => {
 
 /////////////////////////////////
 
-export const Keyboard = () => {
+export const Keyboard = ({song}) => {
+
     useEffect(() => {
         audioTune.load();
+        audioApplause.load();
     }, []);
 
     const synth = new Tone.Synth().toDestination();
@@ -755,7 +759,7 @@ export const Keyboard = () => {
             break;
         }
     }
-
+    
     useEffect(()=>{
         document.addEventListener('keydown', (event)=>{
             event.preventDefault();
@@ -779,7 +783,7 @@ export const Keyboard = () => {
     }, []);
 
     function findKey(keycode,keyname){
-        if(keycode===16||keycode===17){
+        if(keycode===16||keycode===17||keycode===18){
             if(keyname==="ShiftLeft"){
                 return [keyboard[4],5, 0];
             }
@@ -792,6 +796,12 @@ export const Keyboard = () => {
             if(keyname==="ControlRight"){
                 return [keyboard[5],6,6];
             }
+            if(keyname==="AltLeft"){
+                return [keyboard[5],6,3];
+            }
+            if(keyname==="AltRight"){
+                return [keyboard[5],6,5];
+            }
         }
         for(let i = 0; i<6; i++ ){
             const res = keyboard[i].findIndex(content => {
@@ -803,106 +813,27 @@ export const Keyboard = () => {
         }
     };
 
-    const [composition, setComposition] = useState([]);
-   
+    const [composition, setComposition] = useState(song);
     const {n, setN } = useContext(ProgressContext);  
-
+    
     let i = 0;   
-    const jb = [
-        {code: 85,
-         play: "C4", 
-         index: 0
-        },
-        {code: 75,
-        play: "A4", 
-        index: 1        
-        },
-        {code: 82,
-         play: "G4", 
-         index: 2
-        },
-        {code: 65,
-        play: "F4", 
-        index: 3
-        },  
-        {code: 70,
-         play: "D4", 
-         index: 4
-        },  
-        {code: 90,
-        play: "A#4", 
-        index: 5
-        },
-        {code: 189,
-        play: "E4", 
-        index: 6
-        },           
-        {code: 66,
-        play: "C5", 
-        index: 7
-        },
-        {code: 186,
-        play: "G5", 
-        index: 8
-        },
-        {code: 74,
-        play: "D5", 
-        index: 9
-        }
-        ];
-
-    const hb = [
-        {code: 80,
-         play: "G4"
-        },
-        {code: 78,
-        play: "A4"
-        },
-        {code: 188,
-         play: "C5"
-        },
-        {code: 88,
-        play: "B4"
-        },   
-        {code: 83,
-        play: "D5"
-        },
-        {code: 27,
-        play: "E5"
-        },           
-        {code: 69,
-        play: "F5"
-        },
-        {code: 77,
-        play: "A5"
-        }
-        ];     
       
-    const order = [0,0,1,0,2,3,0,1,0,4,2,0,0,7,5,2,3,1,6,6,5,2,4,2,2]; 
-    const orderjb = [0,1,2,3,0,
-                     0,0,0,1,2,3,4,
-                     4,5,1,2,6,
-                     7,7,5,2,1,
-                     0,1,2,3,0,
-                     0,0,0,1,2,3,4,
-                     4,5,1,2,
-                     7,7,7,9,7,5,2,3,
-                     7,1,1,1,1,1,1,1,7,
-                     3,2,1,5,5,5,5,1,1,
-                     1,1,1,2,2,1,2,7,1,1,1,
-                     1,1,1,2,2,1,7,1,1,1,
-                     1,1,1,1,7,3];
+      
+     const notes = composition.notes;
+     const noteOrder = composition.noteOrder;
+
+     
                          
-        let nowKey = jb[orderjb[i]];
+  //   let nowKey = jb[orderjb[i]];
         
-         
+       let   nowKey = notes[noteOrder[i]];
         const [faile, setFaile] = useState(false);
         function handleOrder(keycode){
-        console.log("nowkey now is   ",nowKey, " ", keycode);
+     //   console.log("nowkey now is   ",nowKey, " ", keycode);
         if(keycode === nowKey.code){
             setFaile(false);
             i++;
-            console.log(nowKey);
+        //    console.log(nowKey);
             synth.triggerAttackRelease(nowKey.play, "8n");
         }
         else{
@@ -910,13 +841,16 @@ export const Keyboard = () => {
             setFaile(true);
             i=0;            
         }
-        if(i>orderjb.length-1){
+        if(i>noteOrder.length-1){
+            setIsEnd(true);
+            audioApplause.play();
             console.log("songend");
             i=0;            
         };
-         nowKey= jb[orderjb[i]];
+        // nowKey= jb[orderjb[i]];
+        nowKey = notes[noteOrder[i]];
          
-         setN({name:orderjb[i]});
+        setN({name:noteOrder[i]});
     }
 
     
@@ -927,7 +861,7 @@ export const Keyboard = () => {
     const [firstEnter, setEnterStatus] = useState(true);
    
     useEffect(()=>{
-        console.log("HOOIII ",n.indexOrder , " ", i);
+        // console.log("HOOIII ",n.indexOrder , " ", i);
         faile ? setComment("Try again!"):n.indexOrder===7?setComment("Great!"):n.indexOrder===4?setComment("Good!"):setComment("Wow!");
         if(!firstEnter)
         animateComments();
@@ -942,8 +876,9 @@ export const Keyboard = () => {
        setTimeout((
         )=>{ setAnimate("hideComment");}, 320);
    }
-    
-    return (<>
+    const [isEnd, setIsEnd] = useState(true);
+    return (
+    <> {isEnd?<ShowScore/>:""}
         <div className= {`comments ${myAnimation}`}>
                {comment}
         </div>

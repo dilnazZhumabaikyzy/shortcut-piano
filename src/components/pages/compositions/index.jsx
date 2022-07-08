@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from "../../../routing";
 
 export const Compositions = (props) => {
-  const { gameStatus } = useContext(UserContext);
+  const { gameStatus, setSong} = useContext(UserContext);
   // console.log(gameStatus, ' is gameStatus');
 
   useEffect(() => {
@@ -84,7 +84,7 @@ export const Compositions = (props) => {
               </div>
               <div className="playButton">
                 <Link to="/instruction" className='text-link'>
-                  <button onClick={() => console.log(el.title)}>Play</button>
+                  <button onClick={() => {setSong(el)}}>Play</button>
                 </Link>
               </div>
             </div>

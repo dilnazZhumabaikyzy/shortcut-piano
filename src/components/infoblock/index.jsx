@@ -4,14 +4,13 @@ import { ProgressContext } from "../playArea";
 
 export const Infoblock = () => {
   const {currentCommands} = useContext(UserContext);
-  console.log(useContext(UserContext));
   const {n} = useContext(ProgressContext);
   // console.log(n);
   const [style, setStyle] = useState("default");
   useEffect(() => {
     //Runs on the first render
     //And any time any dependency value changes
-    console.log("useEffect fired");
+    // console.log("useEffect fired");
     fireAnim();
   }, [n]);
 
