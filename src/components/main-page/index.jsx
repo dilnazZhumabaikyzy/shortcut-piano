@@ -3,9 +3,13 @@ import vscodeLogo from '../../assets/images/vscode.svg';
 import gmailLogo from '../../assets/images/logo-gmail.png';
 import { Link } from "react-router-dom";
 import { UserContext } from '../../routing';
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
   
 export const Main = ()=>{
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        // console.log(props);
+      }, []);
     const  {gameStatus, setGameStatus} = useContext(UserContext);
     return(
         <>

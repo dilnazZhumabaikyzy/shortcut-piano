@@ -11,7 +11,8 @@ export const Compositions = (props) => {
   // console.log(gameStatus, ' is gameStatus');
 
   useEffect(() => {
-    console.log(props);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    // console.log(props);
   }, []);
 
   const { myArray } = props;

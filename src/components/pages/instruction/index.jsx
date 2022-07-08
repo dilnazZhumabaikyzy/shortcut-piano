@@ -1,10 +1,14 @@
 import { Header } from "../../header";
 import { Link } from "react-router-dom";
 import videojpeg from "../../../assets/images/video.jpg";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 export const Instruction = (props)=>{
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        // console.log(props);
+      }, []);
     const [detailsIsActive,setStatus] = useState(false);
     const currentCommands = props.currentCommands;
   return (

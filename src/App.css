@@ -303,7 +303,7 @@ p {
 }
 
 .comments{
-  z-index: 9999999;
+  z-index: 1000;
   font-size: 7em;
   font-weight: 700;
   width: 100%;
@@ -317,6 +317,7 @@ p {
 }
 
 .hideComment{
+  z-index: 0;
   font-size: 6em;
   opacity: 0;
 }
@@ -460,4 +461,5 @@ p {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  z-index: 9999;
 }

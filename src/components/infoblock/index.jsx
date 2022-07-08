@@ -8,9 +8,7 @@ export const Infoblock = () => {
   // console.log(n);
   const [style, setStyle] = useState("default");
   useEffect(() => {
-    //Runs on the first render
-    //And any time any dependency value changes
-    // console.log("useEffect fired");
+
     fireAnim();
   }, [n]);
 

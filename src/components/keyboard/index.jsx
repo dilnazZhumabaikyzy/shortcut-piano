@@ -9,6 +9,12 @@ import * as Tone from 'tone';
 import { ProgressContext } from '../playArea';
 import { ShowScore } from '../showScore';
 
+import JSConfetti from 'js-confetti';
+
+const jsConfetti = new JSConfetti();
+
+
+
 const audioTune = new Audio(audioPath);
 
 const audioApplause = new Audio(audioPathApplause);
@@ -663,23 +669,25 @@ const row6 = [{
 },
 {
     style: false,
-        name:   "Win",
+    name:   <i className="fa-brands fa-windows" style = {{fontSize: "2em"}}></i>,
     type: "default-key center",
-    code: 91
+    code: 91,
+    id: "Win"
 },
 
 {
     style: false,
-        name:   "Alt",
+    name:   "Alt",
     type: "default-key center",
     id: "Alt1",
     code: 18
 },
 {
     style: false,
-        name:   "Space",
+    name:   "\n",
     type: "default-key center",
-    code: 32
+    code: 32,
+    id: "Space"
 },
 {
     style: false,
@@ -828,7 +836,7 @@ export const Keyboard = ({song}) => {
         
        let   nowKey = notes[noteOrder[i]];
         const [faile, setFaile] = useState(false);
-        function handleOrder(keycode){
+        async function handleOrder(keycode){
      //   console.log("nowkey now is   ",nowKey, " ", keycode);
         if(keycode === nowKey.code){
             setFaile(false);
@@ -843,6 +851,13 @@ export const Keyboard = ({song}) => {
         }
         if(i>noteOrder.length-1){
             setIsEnd(true);
+            
+           await jsConfetti.addConfetti({
+            emojis: [ '⭐'],
+            emojiSize: 20,
+              confettiNumber: 100,
+         });
+
             audioApplause.play();
             console.log("songend");
             i=0;            
@@ -876,9 +891,9 @@ export const Keyboard = ({song}) => {
        setTimeout((
         )=>{ setAnimate("hideComment");}, 320);
    }
-    const [isEnd, setIsEnd] = useState(true);
+    const [isEnd, setIsEnd] = useState(false);
     return (
-    <> {isEnd?<ShowScore/>:""}
+    <> {isEnd?<ShowScore setIsEnd = {setIsEnd}/>:""}
         <div className= {`comments ${myAnimation}`}>
                {comment}
         </div>
