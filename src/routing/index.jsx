@@ -33,8 +33,7 @@ export const MyRoutes = () => {
           <Routes>
             <Route path='/' element={<App/>} />
             <Route path='/play' element={<Play song = {song}/>} />
-            <Route path='/compositions/basic' element={<Compositions myArray = {compositionProps} />} />
-            <Route path='/compositions/advanced' element={<Compositions myArray = {compositionProps} />} />
+            <Route path='/compositions/:category' element={<Compositions myArray = {compositionProps} />} />
             <Route path='/instruction' element={<Instruction currentCommands ={currentCommands}/>} />
           </Routes>
         </BrowserRouter>

@@ -2,11 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { Header } from "../../header"
 import logo from '../../../assets/images/disk.png';
 import logo2 from '../../../assets/images/diskLock.png';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from "../../../routing";
 
 export const Compositions = (props) => {
+  const {category} = useParams();
+  console.log(category);
+
   const {gameStatus, setSong} = useContext(UserContext);
   // console.log(gameStatus, ' is gameStatus');
 
@@ -18,13 +21,9 @@ export const Compositions = (props) => {
 
   useEffect(() => {
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-    
-
-
-
   }, []);
 
-  if (gameStatus === "advanced") {
+  if (category === "advanced") {
     return (
       <>
         <Header>
