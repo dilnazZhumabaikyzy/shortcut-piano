@@ -813,7 +813,7 @@ export const Keyboard = ({song}) => {
         }
         for(let i = 0; i<6; i++ ){
             const res = keyboard[i].findIndex(content => {
-                return content.code === keycode
+            return content.code === keycode;
            });
            if (res !== -1 ){
             return [keyboard[i],i+1, res];
@@ -824,7 +824,8 @@ export const Keyboard = ({song}) => {
     const [composition, setComposition] = useState(song);
     const {n, setN } = useContext(ProgressContext);  
     
-    let i = 0;   
+    let i = 0; 
+    let isCorrect = "";  
       
       
      const notes = composition.notes;
@@ -837,17 +838,19 @@ export const Keyboard = ({song}) => {
        let   nowKey = notes[noteOrder[i]];
         const [faile, setFaile] = useState(false);
         async function handleOrder(keycode){
-     //   console.log("nowkey now is   ",nowKey, " ", keycode);
+     
         if(keycode === nowKey.code){
             setFaile(false);
             i++;
-        //    console.log(nowKey);
+            isCorrect = true;
+
             synth.triggerAttackRelease(nowKey.play, "8n");
         }
         else{
             audioTune.play();
             setFaile(true);
-            i=0;            
+            i=0;  
+            isCorrect = false;          
         }
         if(i>noteOrder.length-1){
             setIsEnd(true);
@@ -862,10 +865,10 @@ export const Keyboard = ({song}) => {
             console.log("songend");
             i=0;            
         };
-        // nowKey= jb[orderjb[i]];
+        
         nowKey = notes[noteOrder[i]];
          
-        setN({name:noteOrder[i]});
+        setN({name:noteOrder[i], index: i, bool: isCorrect});
     }
 
     
@@ -876,20 +879,44 @@ export const Keyboard = ({song}) => {
     const [firstEnter, setEnterStatus] = useState(true);
    
     useEffect(()=>{
-        // console.log("HOOIII ",n.indexOrder , " ", i);
-        faile ? setComment("Try again!"):n.indexOrder===7?setComment("Great!"):n.indexOrder===4?setComment("Good!"):setComment("Wow!");
-        if(!firstEnter)
-        animateComments();
+        if(faile){
+            setComment("Try again!");
+            animateComments();
+           }
+         else
+           checkProgress(n.index);
+        // faile ?
+        //        setComment("Try again!"):n.indexOrder===7
+        //       ?
+        //       setComment("Great!"):n.indexOrder===4
+        //       ?
+        //       setComment("Good!"):setComment("Wow!");
+
+        // if(!firstEnter)
+        // animateComments();
     },[n,faile]);
     useEffect(()=>{
         setEnterStatus(false);
     },[]);
+     
+   function checkProgress(n){
+    console.log(n);
+    if(n===7){
+        setComment("Great!");
+        animateComments();
+    }
+    else if(n===4){
+        setComment("Good!");
+        animateComments();
+    }
+    }
+
     
    function animateComments(){
       setAnimate("");
 
-       setTimeout((
-        )=>{ setAnimate("hideComment");}, 320);
+      setTimeout((
+      )=>{ setAnimate("hideComment");}, 320);
    }
     const [isEnd, setIsEnd] = useState(false);
     return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import App from '../App';
 
 import { useState, createContext, useContext } from "react";
@@ -21,8 +21,12 @@ export const MyRoutes = () => {
 
   const [gameStatus,setGameStatus] = useState("basic");
   const [song,setSong] = useState(compositionProps[0]);
+  const [currentCommands,setCurrentCommands] = useState(shortcutsList.slice(song.section[0],song.section[1]));
+  useEffect(()=>{
+    setCurrentCommands(shortcutsList.slice(song.section[0],song.section[1]));
+    console.log(song);
+    },[song]);
 
-  const currentCommands = shortcutsList.slice(song.section[0],song.section[1]);
     return (
         <UserContext.Provider value={{currentCommands,gameStatus,setGameStatus,song,setSong}}>
         <BrowserRouter>

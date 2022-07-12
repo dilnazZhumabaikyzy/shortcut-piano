@@ -7,19 +7,23 @@ import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from "../../../routing";
 
 export const Compositions = (props) => {
-  const { gameStatus, setSong} = useContext(UserContext);
+  const {gameStatus, setSong} = useContext(UserContext);
   // console.log(gameStatus, ' is gameStatus');
-
-  useEffect(() => {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-    // console.log(props);
-  }, []);
 
   const { myArray } = props;
   
   const [ma,setMa] = useState(myArray);
-
   const [transition, setTransition] = useState("");
+
+
+  useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    
+
+
+
+  }, []);
+
   if (gameStatus === "advanced") {
     return (
       <>
@@ -30,16 +34,8 @@ export const Compositions = (props) => {
     );
 
   };
-
-
   function handleAnimation(index, bool = true){
-    console.log("handle ", bool);
-    // console.log(ma);
-    // console.log(index);
-
-    // console.log(ma.slice(0, index));
-    // console.log(  {...ma[index]});
-    // console.log(ma.slice(index+1));
+    // console.log("handle ", bool);
     let temp = ma;
     temp = [...ma.slice(0, index),
     {
@@ -49,12 +45,6 @@ export const Compositions = (props) => {
     ...ma.slice(index+1)   
     ];
     setMa(temp);
-    // console.log(temp);
-    // console.log(ma);
-    
-    // setTimeout(()=>{
-    //   console.log(ma," 3 sec");
-    // },3000)
   }
 
   return (
@@ -65,8 +55,8 @@ export const Compositions = (props) => {
 
         <div className="composition-list">
         {ma.map((el, index) => (
-            <div className={`composition ${el.locked ? "" : "locked"}`} key={index}>
-              <div className={`background ${el.transition?"transition-line":""}`} onMouseEnter={(e) => { e.preventDefault(); handleAnimation(index)}} onMouseLeave={(e) =>{ e.preventDefault(); handleAnimation(index,false)}} >
+            <div className={`composition ${el.locked ? "" : "locked"}`} key={index} onMouseEnter={(e) => {handleAnimation(index)}} onMouseLeave={(e) =>{ e.preventDefault(); handleAnimation(index,false)}}>
+              <div className={`background ${el.transition?"transition-line":""}`} >
                 <div className="line"></div>
                 <div className="line"></div>
                 <div className="line"></div>

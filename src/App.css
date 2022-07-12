@@ -171,21 +171,39 @@ html{
 }
 
 .infoblock{
-  font-family: 'Forum', cursive;
   /* font-family: 'Poppins', sans-serif; */
   font-size: 2em;
   font-weight: 500;
   border: solid 2px;
   /* background-color: rgba(131, 130, 163, 0.281); */
-  border-radius: 1rem;
+  border-radius: 1em;
   width: 70%;
   height: 20vh;
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   transition: all 0.3s linear;
+}
+.description{
+  /* font-family: 'Forum', cursive; */
+  font-size: 0.9em;
+  font-weight: 600;
+  padding: 1em;
+  width: 70%;
+  text-align: left;
+}
+.hint{
+  border: solid 2px;
+  border-radius: 1em;
+  padding: 0.3em;
+  margin-right: 1em;
+  width: 30%;
+  font-size: 0.7em;
+}
+.hint.testStyle{
+  background-color: rgb(23, 205, 138);
 }
 .infoblock:hover{
  background-color: rgba(255, 7, 197, 0.172);
@@ -262,35 +280,71 @@ html{
 .testStyle {
   opacity: 0;
   background-color: #FC5C7D;
- 
-  padding: 10px;
+
   transition: all 0.5s linear;
 }
+
 .default{
   opacity: 1;
   transition: all 0.25s linear;
 }
 .details{
+  position: relative;
+}
+.details-overlay{
   width: 100%;
   height: 100vh;
   background: #5757576e;
   position: fixed;  
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+.scroll-content{
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 0.5em;
 }
 .details-inner{
+  position: fixed;
   background-color: #ab81de;
+
   width: 70%;
   height: 70vh;
   border-radius: 3em;
   padding: 25px 40px;
-  overflow: hidden;
   z-index: 99999;
+  
+  
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 .details-inner img{
   margin-left: 30%;
   height: 400px;
+}
+
+.details ::-webkit-scrollbar {
+  width: 10px;
+}
+.details ::-webkit-scrollbar-track {
+  border-radius: 1em;
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.details ::-webkit-scrollbar-thumb {
+  width: 10px;
+  border-radius: 1em;
+  background:#8e5797; 
+}
+
+/* Handle on hover */
+.details ::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 
 
@@ -430,7 +484,6 @@ p {
     border-color: gray;
     color: rgb(190, 190, 190);
     background-color: rgba(118, 118, 118, 0.785);
-
   }
   .locked i{
     color: rgb(190, 190, 190);
@@ -462,4 +515,9 @@ p {
   justify-content: space-around;
   width: 100%;
   z-index: 9999;
+}
+.progressBar{
+  background-color: #009FFF;
+  width: 100%;
+  height: 10px;
 }
