@@ -1,6 +1,6 @@
 import './App.css';
 import {Header} from './components/header';
-import {Main} from './components/main-page'
+import {Main} from './pages/main-page'
 import {Footer} from './components/footer'
 import { MyRoutes } from './routing';
 

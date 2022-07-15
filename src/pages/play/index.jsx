@@ -1,9 +1,9 @@
 
-import {Header} from '../../header';
+import {Header} from '../../components/header';
 
-import {Footer} from '../../footer';
+import {Footer} from '../../components/footer';
 
-import {PlayArea} from '../../playArea';
+import {PlayArea} from '../../components/playArea';
 import { useParams } from 'react-router-dom';
 
 

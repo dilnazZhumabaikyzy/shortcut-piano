@@ -16,7 +16,8 @@ export const PlayArea = ({songIndex}) => {
   const [n, setN] = useState({ name: 0 });
   const [userScore, setUserScore] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
-  const value = {n, setN,userScore, setUserScore, isEnd, setIsEnd};
+  const [isMouseOver, setMouse] = useState(false);
+  const value = {n, setN,userScore, setUserScore, isEnd, setIsEnd,isMouseOver, setMouse};
 
   
   return (

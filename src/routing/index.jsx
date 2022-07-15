@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import App from '../App';
 
 import { useState, createContext, useContext } from "react";
-import { Compositions } from '../components/pages/compositions';
+import { Compositions } from '../pages/compositions';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Play  from '../components/pages/play';
-import { Instruction } from '../components/pages/instruction';
+import Play  from '../pages/play';
+import { Instruction } from '../pages/instruction';
 
 import { basicGmail } from '../modules/compositions';
 import { shortcutsList } from '../modules/shortcuts';

@@ -829,7 +829,7 @@ export const Keyboard = ({song}) => {
     };
 
     const [composition, setComposition] = useState(song);
-    const {n, setN , userScore,setUserScore,isEnd, setIsEnd} = useContext(ProgressContext);  
+    const {n, setN , userScore,setUserScore,isEnd, setIsEnd,isMouseOver} = useContext(ProgressContext);  
     
     let i = 0; 
     let isCorrect = "";  
@@ -878,50 +878,58 @@ export const Keyboard = ({song}) => {
     
 //__________________COMMENTS ANIMATION___________________________________________________
     
-    const [comment, setComment] = useState("Wow!");
-    const [myAnimation, setAnimate] = useState("hideComment");
-    const [firstEnter, setEnterStatus] = useState(true);
-    const [frequency, setFrequency] = useState(0);
+//     const [comment, setComment] = useState("+10");
+//     const [myAnimation, setAnimate] = useState("hideComment");
+//     const [firstEnter, setEnterStatus] = useState(true);
+//     const [combo, setCombo] = useState(0);
     
-    useEffect(()=>{
-        if(faile){
-            setComment("Try again!");
-            animateComments();
-           }
-         else
-           checkProgress(n.index);
-    },[n,faile]);
+//     useEffect(()=>{
+//         if(!firstEnter){
+//              if(faile){
+//             setComment("Try again!");
+//             animateComments();
+//             setCombo(0);
+//            }
+//         else if(!isMouseOver){
+//            setCombo(combo+1);
+//            checkProgress(combo);
+//            animateComments();
+//          }
+//         }
+       
+        
+//         console.log(combo);
+//     },[n,faile]);
 
-    useEffect(()=>{
-        setEnterStatus(false);
-    },[]);
+//     useEffect(()=>{
+//         setEnterStatus(false);
+//     },[]);
      
-   function checkProgress(n){    
-    if(n===7){
-        // setUserScore(userScore+50);
-        setComment("Great!");
-        animateComments();
-    }
-    else if(n===4){
-        // setUserScore(userScore+30);
-        setComment("Good!");
-        animateComments();
-    }
-    };
+//    function checkProgress(n){    
+//     if(n===7){
+//         setUserScore(userScore+50);
+//         setComment("Great! +50");
+        
+//     }
+//     else if(n===4){
+//         setUserScore(userScore+30);
+//         setComment("Good! +30");
+//     }
+//     };
 
     
-   function animateComments(){
-      setAnimate("");
-      setTimeout((
-      )=>{ setAnimate("hideComment");}, 320);
-   }
+//    function animateComments(){
+//       setAnimate("");
+//       setTimeout((
+//       )=>{ setAnimate("hideComment");}, 320);
+//    }
 
 //_____________________________RETURN_______________________________________________________________________
     return (
     <> {isEnd?<ShowScore setIsEnd = {setIsEnd}/>:""}
-        <div className= {`comments ${myAnimation}`}>
+        {/* <div className= {`comments ${myAnimation}`}>
                {comment}
-        </div>
+        </div> */}
         <div className='keyboard'>
             <div className="row" id='functions'>
                 {

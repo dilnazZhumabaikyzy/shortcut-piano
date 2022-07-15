@@ -1,6 +1,6 @@
-import { Header } from "../../header";
+import { Header } from "../../components/header";
 import { Link, useParams } from "react-router-dom";
-import videojpeg from "../../../assets/images/video.jpg";
+import videojpeg from "../../assets/images/video.jpg";
 import { useState,useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 

@@ -13,9 +13,9 @@ export const ShowScore = ({setIsEnd})=>{
                 <Link to = {`/compositions/${category}/${app}`}>
                 <button onClick={()=>console.log("you clicked me!")}>Go back</button>
                 </Link> 
-                <Link to = {`/play/${category}/${app}/${param}`}>                   
-                <button onClick={()=> setIsEnd(false)}>Again</button>
-                </Link>    
+                  
+                <button onClick={()=> {setIsEnd(false); window.location.reload(false)}}>Again</button>
+                
             </div>             
         </div>
     )
