@@ -8,7 +8,7 @@ import { useContext,useEffect } from 'react';
 export const Main = ()=>{
     useEffect(() => {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-        // console.log(props);
+        // 
       }, []);
     const  {gameStatus, setGameStatus} = useContext(UserContext);
     return(
@@ -44,7 +44,7 @@ export const Main = ()=>{
                 <div className='basic'>                   
                 <div className='play-block'>
                      <h1>Basic</h1>
-                     <Link to="/compositions/basic" className='text-link'>
+                     <Link to="/compositions/basic/gmail" className='text-link'>
                      <button className='play-basic-win' onClick={()=>setGameStatus("basic")}>
                       Play                        
                      </button>
@@ -58,7 +58,8 @@ export const Main = ()=>{
                 <div className='advanced'>
                     <div className='play-block'>
                                      <h1>Advanced</h1>
-                                     <Link to="/compositions/advanced" className='text-link'>
+                                     <Link to="/compositions/advanced/gmail
+                                     " className='text-link'>
                                      <button className='play-advanced-win'  onClick={()=>setGameStatus("advanced")}>Play</button>
                      </Link>
                     </div>   
@@ -76,7 +77,7 @@ export const Main = ()=>{
                 <div className='basic'>                   
                 <div className='play-block'>
                      <h1>Basic</h1>
-                     <Link to="/compositions/basic" className='text-link'>
+                     <Link to="/compositions/basic/gmail" className='text-link'>
                      <button className='play-basic-win' onClick={()=>setGameStatus("basic")}>
                       Play                        
                      </button>
@@ -90,7 +91,7 @@ export const Main = ()=>{
                 <div className='advanced'>
                     <div className='play-block'>
                                      <h1>Advanced</h1>
-                                     <Link to="/compositions/advanced" className='text-link'>
+                                     <Link to="/compositions/advanced/gmail" className='text-link'>
                                      <button className='play-advanced-win'  onClick={()=>setGameStatus("advanced")}>Play</button>
                      </Link>
                     </div>   

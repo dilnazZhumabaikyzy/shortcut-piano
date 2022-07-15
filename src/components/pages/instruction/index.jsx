@@ -1,28 +1,41 @@
 import { Header } from "../../header";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import videojpeg from "../../../assets/images/video.jpg";
 import { useState,useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 export const Instruction = (props)=>{
+    const {category, app} = useParams();
+    const {param} = useParams();
     useEffect(() => {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-        console.log(props);
+        sessionStorage.setItem('currentSongScore',{});
+        console.log(sessionStorage.getItem('currentSongScore'));
       }, []);
+    
     const [detailsIsActive,setStatus] = useState(false);
-    const [currentInstruction,setCurrentInstruction] = useState("");
-    const currentCommands = props.currentCommands;
+    const [currentInstruction, setCurrentInstruction] = useState("");
+
+    const shortcutsList = props.shortcutsList;
+    const basicGmail = props.basicGmail;
+
+    const currentCompositionIndex = basicGmail.findIndex(item => (item.id === param));
+    const currentComposition = basicGmail[currentCompositionIndex];
+
+    const currentCommands = shortcutsList.slice(currentComposition.section[0], currentComposition.section[1]);
+
+     
    
 
    function handleInstruction(el){
     setStatus(true);
     setCurrentInstruction(el.instruction);
-    console.log(currentInstruction);
+    
    }
   return (
     <>
     <div className={`details ${detailsIsActive ? "":"hide"}`}>
-        <div className= "details-overlay" onClick={()=>{console.log("you clecked me"); setStatus(false)}}>     
+        <div className= "details-overlay" onClick={()=>{ setStatus(false)}}>     
         </div>
         <div className= "details-inner">
             <div className="scroll-content">
@@ -39,7 +52,7 @@ export const Instruction = (props)=>{
       <Header></Header>
       <div className="instruction-header" >
           <h1>Memorize these shortcuts</h1>
-          <Link to = "/play"
+          <Link to = {`/play/${category}/${app}/${currentCompositionIndex}`}
            className='text-link'>
                      <button>
                     Go

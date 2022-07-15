@@ -178,7 +178,7 @@ html{
   /* background-color: rgba(131, 130, 163, 0.281); */
   border-radius: 1em;
   width: 70%;
-  height: 20vh;
+  height: 27vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -188,22 +188,27 @@ html{
 }
 .description{
   /* font-family: 'Forum', cursive; */
-  font-size: 0.9em;
+  font-size: 1.9vw;
   font-weight: 600;
   padding: 1em;
   width: 70%;
   text-align: left;
 }
 .hint{
+  height: 30%;
   border: solid 2px;
   border-radius: 1em;
   padding: 0.3em;
-  margin-right: 1em;
-  width: 30%;
+  margin: 1em;
+  width: 20vw;
   font-size: 0.7em;
 }
-.hint.testStyle{
-  background-color: rgb(23, 205, 138);
+
+.infoblock0{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
 }
 .infoblock:hover{
  background-color: rgba(255, 7, 197, 0.172);
@@ -277,11 +282,12 @@ html{
   background-color: #009dff;;
 }
 
-.testStyle {
-  opacity: 0;
-  background-color: #FC5C7D;
 
-  transition: all 0.5s linear;
+.correct{
+  background-color: #5cfc8c;
+}
+.false{
+  background-color: #ff2747b3;
 }
 
 .default{
@@ -452,7 +458,7 @@ p {
  }
 
  .composition-list{
-  padding: 5% 0;
+  padding-bottom: 5%;
  }
 
  .locked { 
@@ -517,7 +523,30 @@ p {
   z-index: 9999;
 }
 .progressBar{
-  background-color: #009FFF;
-  width: 100%;
-  height: 10px;
+  margin: 0 5%;
+  align-self: flex-start;
+  left: 0;
+  /* background-color: #a946d7bb; */
+  background-color: #a933d090;
+  height: 15px;
+  margin-top: -0.3em;
+  border-radius: 1em;
+  transition: all 0.5s linear;
+}
+
+
+.scoreBar{
+  width: 10%;
+  border-radius: 3em;
+  margin: 0.3em;
+  padding: 0.6em;
+  background: #e445cf;
+  right: 0;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  color: #f6ff98;
+  text-align: center;
+}
+.scoreBar span{
+  margin-right: 3px;
 }

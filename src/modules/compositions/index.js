@@ -1,6 +1,6 @@
 const basicGmail = [
-    {
-    title: "Happy Birthday",
+    {id: "hb",
+     title: "Happy Birthday",
      description: "8 basic commands to learn",
      score:0,
      locked: true,
@@ -31,7 +31,9 @@ const basicGmail = [
        }],
        noteOrder:[0,0,1,0,2,3,0,1,0,4,2,0,0,7,5,2,3,1,6,6,5,2,4,2]
     },
-     {title: "Jingle Bells",
+     {
+      id: "jb",
+      title: "Jingle Bells",
      description: "10 basic commands to learn",
      score:0,
      locked: true,

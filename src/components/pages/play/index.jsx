@@ -4,18 +4,19 @@ import {Header} from '../../header';
 import {Footer} from '../../footer';
 
 import {PlayArea} from '../../playArea';
+import { useParams } from 'react-router-dom';
 
 
-function Play(props) {
-  const {song} = props;
+function Play() {
+  const {param} = useParams();
+  // const {song} = props;
 
   return (
   <>
     <div className='container'>
       <Header></Header>
-      <PlayArea song = {song}></PlayArea>      
-     </div>
-      {/* <Footer></Footer> */}
+      <PlayArea songIndex = {param}></PlayArea>      
+    </div>
   </>
   );
 }

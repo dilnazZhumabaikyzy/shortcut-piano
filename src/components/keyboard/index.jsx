@@ -10,6 +10,7 @@ import { ProgressContext } from '../playArea';
 import { ShowScore } from '../showScore';
 
 import JSConfetti from 'js-confetti';
+import { useParams } from 'react-router-dom';
 
 const jsConfetti = new JSConfetti();
 
@@ -730,10 +731,16 @@ const handleQuadrants = (quadrants) => {
 /////////////////////////////////
 
 export const Keyboard = ({song}) => {
-
+    // Сохранение данных в sessionStorage
+    const params = useParams();
+   
     useEffect(() => {
         audioTune.load();
         audioApplause.load();
+        console.log(params);
+        window.onbeforeunload = function() {
+            return "Data will be lost if you leave the page, are you sure?";
+          };
     }, []);
 
     const synth = new Tone.Synth().toDestination();
@@ -822,7 +829,7 @@ export const Keyboard = ({song}) => {
     };
 
     const [composition, setComposition] = useState(song);
-    const {n, setN } = useContext(ProgressContext);  
+    const {n, setN , userScore,setUserScore,isEnd, setIsEnd} = useContext(ProgressContext);  
     
     let i = 0; 
     let isCorrect = "";  
@@ -830,20 +837,18 @@ export const Keyboard = ({song}) => {
       
      const notes = composition.notes;
      const noteOrder = composition.noteOrder;
-
-     
-                         
-  //   let nowKey = jb[orderjb[i]];
         
-       let   nowKey = notes[noteOrder[i]];
+       
+        let   nowKey = notes[noteOrder[i]];
         const [faile, setFaile] = useState(false);
         async function handleOrder(keycode){
-     
-        if(keycode === nowKey.code){
-            setFaile(false);
-            i++;
-            isCorrect = true;
-
+            
+            if(keycode === nowKey.code){
+                setFaile(false);
+                i++;
+                isCorrect = true;
+                // score =+ 10;
+                
             synth.triggerAttackRelease(nowKey.play, "8n");
         }
         else{
@@ -862,7 +867,7 @@ export const Keyboard = ({song}) => {
          });
 
             audioApplause.play();
-            console.log("songend");
+            
             i=0;            
         };
         
@@ -870,14 +875,14 @@ export const Keyboard = ({song}) => {
          
         setN({name:noteOrder[i], index: i, bool: isCorrect});
     }
-
     
-
+//__________________COMMENTS ANIMATION___________________________________________________
     
     const [comment, setComment] = useState("Wow!");
     const [myAnimation, setAnimate] = useState("hideComment");
     const [firstEnter, setEnterStatus] = useState(true);
-   
+    const [frequency, setFrequency] = useState(0);
+    
     useEffect(()=>{
         if(faile){
             setComment("Try again!");
@@ -885,40 +890,33 @@ export const Keyboard = ({song}) => {
            }
          else
            checkProgress(n.index);
-        // faile ?
-        //        setComment("Try again!"):n.indexOrder===7
-        //       ?
-        //       setComment("Great!"):n.indexOrder===4
-        //       ?
-        //       setComment("Good!"):setComment("Wow!");
-
-        // if(!firstEnter)
-        // animateComments();
     },[n,faile]);
+
     useEffect(()=>{
         setEnterStatus(false);
     },[]);
      
-   function checkProgress(n){
-    console.log(n);
+   function checkProgress(n){    
     if(n===7){
+        // setUserScore(userScore+50);
         setComment("Great!");
         animateComments();
     }
     else if(n===4){
+        // setUserScore(userScore+30);
         setComment("Good!");
         animateComments();
     }
-    }
+    };
 
     
    function animateComments(){
       setAnimate("");
-
       setTimeout((
       )=>{ setAnimate("hideComment");}, 320);
    }
-    const [isEnd, setIsEnd] = useState(false);
+
+//_____________________________RETURN_______________________________________________________________________
     return (
     <> {isEnd?<ShowScore setIsEnd = {setIsEnd}/>:""}
         <div className= {`comments ${myAnimation}`}>
@@ -1030,8 +1028,6 @@ export const Keyboard = ({song}) => {
                         </div>
                     ))
                 }
-
-
             </div>
             <div></div>
         </div>

@@ -7,7 +7,7 @@ export const Header = ()=>{
             </div>
             <div className="menu">
                 <h3>Games</h3>
-                <h3>Sing Up</h3>
+                <h3>Sign Up</h3>
                 <h3>Log In</h3>
             </div>
         </div>

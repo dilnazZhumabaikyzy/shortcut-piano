@@ -4,37 +4,42 @@ import App from '../App';
 import { useState, createContext, useContext } from "react";
 import { Compositions } from '../components/pages/compositions';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Play  from '../components/pages/play-page';
+import Play  from '../components/pages/play';
 import { Instruction } from '../components/pages/instruction';
 
 import { basicGmail } from '../modules/compositions';
 import { shortcutsList } from '../modules/shortcuts';
-
-
+import {user as userInfo} from "../modules/user";
 export const UserContext = createContext();
 
 
 
 export const MyRoutes = () => {
-
+  
   const compositionProps = basicGmail;
 
   const [gameStatus,setGameStatus] = useState("basic");
   const [song,setSong] = useState(compositionProps[0]);
   const [currentCommands,setCurrentCommands] = useState(shortcutsList.slice(song.section[0],song.section[1]));
-  useEffect(()=>{
-    setCurrentCommands(shortcutsList.slice(song.section[0],song.section[1]));
-    console.log(song);
-    },[song]);
+  const [myUser, setUser] = useState(userInfo); 
 
+  useEffect(()=>{
+    
+    setCurrentCommands(shortcutsList.slice(song.section[0],song.section[1]));
+    
+
+    localStorage.setItem('user',JSON.stringify(myUser));
+
+    },[song]);
+   
     return (
-        <UserContext.Provider value={{currentCommands,gameStatus,setGameStatus,song,setSong}}>
+        <UserContext.Provider value={{currentCommands,gameStatus,setGameStatus,song,setSong, myUser, setUser}}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<App/>} />
-            <Route path='/play' element={<Play song = {song}/>} />
-            <Route path='/compositions/:category' element={<Compositions myArray = {compositionProps} />} />
-            <Route path='/instruction' element={<Instruction currentCommands ={currentCommands}/>} />
+            <Route path='/compositions/:category/:app' element={<Compositions/>} />
+            <Route path='/play/:category/:app/:param' element={<Play/>}/>
+            <Route path='/instruction/:category/:app/:param' element={<Instruction shortcutsList ={shortcutsList} basicGmail = {basicGmail}/>} />
           </Routes>
         </BrowserRouter>
         </UserContext.Provider>
