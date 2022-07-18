@@ -738,9 +738,9 @@ export const Keyboard = ({song}) => {
         audioTune.load();
         audioApplause.load();
         console.log(params);
-        window.onbeforeunload = function() {
-            return "Data will be lost if you leave the page, are you sure?";
-          };
+        // window.onbeforeunload = function() {
+        //     return "Data will be lost if you leave the page, are you sure?";
+        //   };
     }, []);
 
     const synth = new Tone.Synth().toDestination();
@@ -782,16 +782,19 @@ export const Keyboard = ({song}) => {
             const keyname = event.code;
                     
             const res = findKey(keycode,keyname);
-
-            const [row, number, index] = res; 
+            if(res !== undefined){
+               const [row, number, index] = res; 
             setStyle(row, number, index);
-            handleOrder(keycode);        
+            handleOrder(keycode); 
+            }
+                    
         });   
         document.addEventListener('keyup', (event) => {     
             event.preventDefault();  
             const keycode = event.keyCode;
-            const keyname = event.code;          
-                const res = findKey(keycode,  keyname);
+            const keyname = event.code;   
+            const res = findKey(keycode,  keyname);
+            if(res === undefined)return;       
                 const [row, number, index] = res; 
                 setStyle(row, number, index,false);    
         }, false);      

@@ -79,7 +79,7 @@ export const Compositions = () => {
         
         </div>  
         {ma.map((el, index) => (
-            <div className={`composition ${el.locked ? "" : "locked"}`} key={index} onMouseEnter={(e) => {handleAnimation(index)}} onMouseLeave={(e) =>{ e.preventDefault(); handleAnimation(index,false)}}>
+            <div className={`composition ${el.locked ? "" : "locked"}`} key={index} onMouseEnter={(e) => {handleAnimation(index)}}  onMouseLeave={(e) =>{ e.preventDefault(); handleAnimation(index,false)}}>
               <div className={`background ${el.transition?"transition-line":""}`} >
                 <div className="line"></div>
                 <div className="line"></div>
