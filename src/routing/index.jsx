@@ -6,6 +6,9 @@ import { Compositions } from '../pages/compositions';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Play  from '../pages/play';
 import { Instruction } from '../pages/instruction';
+import Login from "../pages/login";
+import Profile from "../pages/profile";
+import Store from "../store/store";
 
 import { basicGmail } from '../modules/compositions';
 import { shortcutsList } from '../modules/shortcuts';
@@ -22,7 +25,8 @@ export const MyRoutes = () => {
   const [song,setSong] = useState(compositionProps[0]);
   const [currentCommands,setCurrentCommands] = useState(shortcutsList.slice(song.section[0],song.section[1]));
   const [myUser, setUser] = useState(userInfo); 
-
+  
+  const store = new Store();
   useEffect(()=>{
     
     setCurrentCommands(shortcutsList.slice(song.section[0],song.section[1]));
@@ -33,13 +37,15 @@ export const MyRoutes = () => {
     },[song]);
    
     return (
-        <UserContext.Provider value={{currentCommands,gameStatus,setGameStatus,song,setSong, myUser, setUser}}>
+        <UserContext.Provider value={{currentCommands,gameStatus,setGameStatus,song, setSong, myUser, setUser, store}}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<App/>} />
             <Route path='/compositions/:category/:app' element={<Compositions/>} />
             <Route path='/play/:category/:app/:param' element={<Play/>}/>
             <Route path='/instruction/:category/:app/:param' element={<Instruction shortcutsList ={shortcutsList} basicGmail = {basicGmail}/>} />
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/profile' element={<Profile/>}/>
           </Routes>
         </BrowserRouter>
         </UserContext.Provider>

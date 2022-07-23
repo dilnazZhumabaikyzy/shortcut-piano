@@ -7,12 +7,6 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 function App() {
-  useEffect(() => {
-    axios.get("http://localhost:5000/getBasicGmail").then((response) => {
-      console.log(response.data);
-    });
-  }, []);
-
   return (
   <>
     <div className='container'>

@@ -39,6 +39,7 @@ html{
   margin-right: 25px;
   padding: 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
 .wrapper{
   height: 100%;
@@ -103,6 +104,10 @@ html{
   font-size: 15px;
   margin-right: 20px;
   font-weight: 400;
+}
+.footer a, .footer a:active, .footer a:hover, .menu a{
+  color: #fff;
+  text-decoration: none;
 }
 .app{
   display: flex;
@@ -571,4 +576,78 @@ p {
 
 .scoreBox h1, .scoreBox h2{
   z-index: 1001;
+}
+
+.login-container{
+  box-sizing: border-box;
+  position: absolute;
+  background: #fff;
+  color: #7a2dff;
+  left: 50%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  padding: 7vw;
+  display: flex;
+  flex-direction: column;
+}
+.login-container input[type=text], input[type=password]{
+  outline: none;
+  font-size: large;
+  border: none;
+  padding: 3em 0;
+  padding-bottom: 1em;
+  border-bottom: solid 2px #7a2dff;
+}
+.login-container input[type=password]{
+  margin-bottom: 3vw;
+}
+.login-container button{
+  border: none;
+  padding: 0.6em 0;
+  background:  #7a2dff;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+.login-container .signupbtn{
+  margin-top: 1em;
+  background:  #e445cf;
+}
+
+.login-svg img{
+  margin-top: 15vh;
+  width: 50%;
+}
+
+.profile-container{
+  box-sizing: border-box;
+  border-radius: 2em;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  overflow: hidden;
+}
+.profile-menu-bar{
+  box-sizing: border-box;
+  padding: 2em;
+   width: 20%;
+   height: 100%;
+   background: #7a2dff;
+   display: flex;
+   flex-direction: column;
+}
+.profile-content{
+  overflow-y: auto;
+  box-sizing: border-box;
+  width: 80%;
+  height: 100%;
+  background: #fff;
+  color: #7a2dff;
+  padding: 3%;
+}
+.profile-section{
+  cursor: pointer;
 }
