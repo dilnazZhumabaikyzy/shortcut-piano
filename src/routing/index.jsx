@@ -61,7 +61,7 @@ export const MyRoutes = observer(() => {
             <Route path='/play/:category/:app/:param' element={<Play/>}/>
             <Route path='/instruction/:category/:app/:param' element={<Instruction shortcutsList ={shortcutsList} basicGmail = {basicGmail}/>} />
             <Route path='/login' element={<Login/>}/>
-            <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
+            <Route path='/profile' element={<Profile/>}/>
             <Route path='test' element={<TestComponent/>}/>
           </Routes>
         </BrowserRouter>
