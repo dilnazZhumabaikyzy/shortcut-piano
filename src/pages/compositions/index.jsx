@@ -7,7 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
  
 import { advancedGmail, basicGmail } from "../../modules/compositions";
-import { Header } from "../../components/header";
+import  Header  from "../../components/header";
 import { UserContext } from "../../routing";
 
 export const Compositions = () => {

@@ -8,16 +8,24 @@ import Play  from '../pages/play';
 import { Instruction } from '../pages/instruction';
 import Login from "../pages/login";
 import Profile from "../pages/profile";
-import Store from "../store/store";
+
+
 
 import { basicGmail } from '../modules/compositions';
 import { shortcutsList } from '../modules/shortcuts';
 import {user as userInfo} from "../modules/user";
+import { observer } from 'mobx-react-lite';
+import RequireAuth from "../hok/RequireAuth";
+import TestComponent from "../hok/TestComponent";
+import Store from '../store/store.js'
+
 export const UserContext = createContext();
 
+const store = new Store();
 
 
-export const MyRoutes = () => {
+
+export const MyRoutes = observer(() => {
   
   const compositionProps = basicGmail;
 
@@ -26,16 +34,24 @@ export const MyRoutes = () => {
   const [currentCommands,setCurrentCommands] = useState(shortcutsList.slice(song.section[0],song.section[1]));
   const [myUser, setUser] = useState(userInfo); 
   
-  const store = new Store();
+  
   useEffect(()=>{
     
     setCurrentCommands(shortcutsList.slice(song.section[0],song.section[1]));
     
-
     localStorage.setItem('user',JSON.stringify(myUser));
 
+
     },[song]);
-   
+
+   useEffect(()=>{
+    if(localStorage.getItem('token')){
+      async function mygn(params) {
+        await store.checkAuth();
+      }
+      mygn();      
+    }
+   },[])
     return (
         <UserContext.Provider value={{currentCommands,gameStatus,setGameStatus,song, setSong, myUser, setUser, store}}>
         <BrowserRouter>
@@ -45,9 +61,10 @@ export const MyRoutes = () => {
             <Route path='/play/:category/:app/:param' element={<Play/>}/>
             <Route path='/instruction/:category/:app/:param' element={<Instruction shortcutsList ={shortcutsList} basicGmail = {basicGmail}/>} />
             <Route path='/login' element={<Login/>}/>
-            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
+            <Route path='test' element={<TestComponent/>}/>
           </Routes>
         </BrowserRouter>
         </UserContext.Provider>
     )
-}
+});

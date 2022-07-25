@@ -1,4 +1,4 @@
-import { Header } from "../../components/header";
+import  Header  from "../../components/header";
 import { Link, useParams } from "react-router-dom";
 import videojpeg from "../../assets/images/video.jpg";
 import { useState,useEffect } from "react";

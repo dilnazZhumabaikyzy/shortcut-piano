@@ -604,17 +604,21 @@ p {
 }
 .login-container button{
   border: none;
-  padding: 0.6em 0;
+  padding: 0.2em 0;
   background:  #7a2dff;
   color: #fff;
   font-size: 25px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
+  transition: background 0.2s ease-in;
 }
 .login-container .signupbtn{
   margin-top: 1em;
   background:  #e445cf;
+}
+.signupbtn:active, .signinbtn:active{
+  background:  #2dff9d;
 }
 
 .login-svg img{
@@ -647,7 +651,35 @@ p {
   background: #fff;
   color: #7a2dff;
   padding: 3%;
+  
 }
 .profile-section{
   cursor: pointer;
+}
+
+
+.editSection  input[type=text]{
+  width: 200px;
+  padding: 0.5em;
+  outline: none;
+  border: none;
+  background: rgb(237, 232, 232);
+  border-bottom: solid 2px #7a2dff;
+
+}
+.passwordBox input[type=text]{
+  width: 200px;
+}
+.passwordBox{
+ display: flex;
+ flex-wrap: wrap;
+ padding-bottom: 2em;
+  border-bottom: solid 2px #c5a7f9;
+}
+.passwordBox div{
+  margin-right: 3em;
+}
+.emailEdit{
+  padding-bottom: 2em;
+  border-bottom: solid 2px #c5a7f9;
 }

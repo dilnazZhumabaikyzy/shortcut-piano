@@ -1,5 +1,7 @@
 import logo from '../../assets/images/email.png';
-export const Footer = ()=>{
+
+const Footer = ()=>{
+
     return(
         <div className='footer'>
             <h5>
@@ -11,3 +13,4 @@ export const Footer = ()=>{
         </div>
     );
 };
+export default Footer;

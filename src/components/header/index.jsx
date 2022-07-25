@@ -1,7 +1,14 @@
 import logo from '../../assets/images/music.png';
 import { Link } from 'react-router-dom';
-export const Header = ()=>{
-    const isAuth = false;
+import { useContext } from 'react';
+import { UserContext } from '../../routing';
+import { observer } from 'mobx-react-lite';
+
+const Header = ()=>{
+    
+    const {store} = useContext(UserContext);
+    const isAuth = store.isAuth;
+
     return(
         <div className="header">
             <div className="logo">
@@ -16,10 +23,12 @@ export const Header = ()=>{
 
                 <Link to={isAuth ?'/profile':'/login'}>
                  <h3>
-                 {isAuth ? `Profile` :`Log In`}
+                 {store.isAuth ? `Profile` :`Log In`}
                  </h3>
                 </Link>
             </div>
         </div>
     );
 };
+
+export default observer(Header);

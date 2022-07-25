@@ -1,14 +1,18 @@
-import { Header } from "../../components/header";
+import  Header  from "../../components/header";
 import { useState } from "react";
 import Edit from "../../components/editprofile";
+import { observer } from "mobx-react-lite";
+import { useContext } from "react";
+import { UserContext } from "../../routing";
 
-const menu =[{section: "Edit", inner: <Edit/>},
-             {section: "Settings", inner: "smth2"}];
-             
-export default function Profile() {
-                 
-const [currentSection, setCurrentSection] = useState(menu[0]); 
 
+const  Profile = () =>{
+    
+    const {store} =useContext(UserContext);
+    const menu =[{section: "Edit", inner: <Edit/>},
+    {section: "Settings", inner: "smth2"}];
+    
+    const [currentSection, setCurrentSection] = useState(menu[0]); 
 return (
     <div>
         <div className='container'>
@@ -21,9 +25,11 @@ return (
             </div>
             <div className="profile-content">
                 {currentSection.inner}
+                <button onClick={()=>store.logout()}>Log out</button>
             </div>
          </div>
      </div>
     </div>
   )
 }
+export default observer(Profile);
