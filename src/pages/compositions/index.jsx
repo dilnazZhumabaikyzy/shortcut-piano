@@ -42,6 +42,9 @@ export const Compositions = () => {
     
     setStars(JSON.parse(localStorage.user).basicGmail);
   }, []);
+  useEffect(()=>{
+    console.log("ma change");
+  },[ma]);
 
   if (category === "advanced") {
     return (
@@ -54,16 +57,35 @@ export const Compositions = () => {
 
   };
   function handleAnimation(index, bool = true){
-    // 
+    console.log("handleAnimation");
     let temp = ma;
-    temp = [...ma.slice(0, index),
-    {
-       ...ma[index],
-       transition: bool
-    },
-    ...ma.slice(index+1)   
-    ];
-    setMa(temp);
+    for(let i = 0; i < ma.length; i++){
+      if(i !== index){
+        temp[i] =  {
+          ...ma[i],
+          transition: false
+         }
+      }
+      else{
+        temp[i] =  {
+          ...ma[i],
+          transition: bool
+         }
+      }
+    }
+  
+
+
+    // const temp = [...ma.slice(0, index),
+    // {
+    //      ...ma[index],
+    //      transition: bool
+    //   },
+    //   ...ma.slice(index+1)   
+    //   ];
+      console.log(temp);
+      setMa([...temp]);
+      console.log(ma);    
   }
 
   return (
@@ -79,7 +101,8 @@ export const Compositions = () => {
         
         </div>  
         {ma.map((el, index) => (
-            <div className={`composition ${el.locked ? "" : "locked"}`} key={index} onMouseEnter={(e) => {handleAnimation(index)}}  onMouseLeave={(e) =>{ e.preventDefault(); handleAnimation(index,false)}}>
+          //onMouseLeave={(e) =>{handleAnimation(index,false)}}
+            <div className={`composition ${el.locked ? "" : "locked"}`} key={index} onMouseEnter={(e) => {handleAnimation(index)}} onMouseLeave={(e) =>{handleAnimation(index,false)}}>
               <div className={`background ${el.transition?"transition-line":""}`} >
                 <div className="line"></div>
                 <div className="line"></div>

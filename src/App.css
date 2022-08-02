@@ -1,46 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&family=Forum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Forum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap');
+
 body{
    background: #FC5C7D;  /* fallback for old browsers */
    background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    background: -webkit-linear-gradient(180deg, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
-  /* background-image: url('./assets/images/luke-chesser-IGtutkXikuc-unsplash.jpg'); */
+   font-family: 'Montserrat', sans-serif;
    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    height: 100%;
+   color: #fff;
+   font-size: 1vw;
 }
-html{
-  height: 100%;
+
+a{ 
+  text-decoration: none;
 }
 
 .container{
-  margin: 0;
-  padding: 0 5%;
+  margin: 0 5%;
 }
+
+/*  --- HEADER ---  */
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
-
+  padding-top: 0.5rem;
+}
+.header a{
   color: #fff;
 }
-.logo img{
-  width: 50px;
+.header h3{
+  font-size: 1.3rem;
 }
-.logo{
- display: flex;
+
+.header img{
+  width: 5rem;
 }
-.menu{
-  display: inherit;
-  justify-content: space-around;
+
+.header .logo{
+  justify-self: start;
 }
-.menu h3{
-  margin-right: 25px;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
+.flex{
+  display: flex;
+  align-items: center;
 }
+
+/*  --- MENU ---  */
+
+
 .wrapper{
   height: 100%;
   display: flex;
@@ -49,13 +57,19 @@ html{
   margin: 5%;
 }
 .wrapper h1{
-  font-size: 75px;
+  font-size: 6vw;
   margin-bottom: 0;
 }
 .wrapper h3{
-  font-size: 30px;
-  font-weight:700;
+  font-size: 2vw;
+  font-weight:300;
   margin-top: 0;
+}
+.wrapper h5{
+  font-weight: 300;
+  font-size: 1.3rem;
+  margin: 0;
+  padding-bottom: 0.5rem;
 }
 
 .cards{
@@ -94,8 +108,7 @@ html{
 }
 
 .footer{
-  background-color: rgb(27, 26, 26);
-  padding: 30px 0;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,6 +123,7 @@ html{
   text-decoration: none;
 }
 .app{
+  width: 100%;
   display: flex;
   background-color: rgba(255, 255, 255, 0.127);
   border-radius:15px;
@@ -122,18 +136,27 @@ html{
   width: 70%;
   margin: 40px 70px 40px 20px ;
 }
-.info h4{
-  font-weight: 400;
-}
 .info h1{
-  font-size: 50px;
-  font-weight: 200;
-
+  margin: 1rem 0;
+  font-size: 3em;
+  font-weight: 300;
+  
 }
 
-/* .basic {
+.info h3{
+  
+  font-weight: 400;
+  margin: 0.3em 0;
+}
 
-} */
+.info h4{
+  font-size: 1.3em;
+  font-weight: 200;
+}
+
+.basic {
+  margin-bottom: 3em;
+}
 .basic button{
   padding: 10px 50px;
   font-family: 'Poppins', sans-serif;
@@ -153,6 +176,7 @@ html{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.88);
 
 }
 .play-block button{
@@ -163,9 +187,7 @@ html{
   border-radius: 20px;
   cursor: pointer;
 }
-.play-block h1{
-   margin: 1rem;
-}
+
 .wrapper.content{
   flex-direction: column;
   margin-top: 10%;
@@ -192,10 +214,11 @@ html{
   transition: all 0.3s linear;
 }
 .description{
+  width: 80%;
   /* font-family: 'Forum', cursive; */
   font-size: 1.9vw;
-  font-weight: 600;
-  padding: 1em;
+  font-weight: 400;
+  padding: 1em 0 0.5em 0;
   width: 70%;
   text-align: left;
 }
@@ -242,7 +265,7 @@ html{
   padding: 1.5rem;
   margin: 0.5rem;
   border-radius: 1rem;
-  background-color: #ff00c365; 
+  background-color: rgba(255, 255, 255, 0.127);
   display: flex;
   transition: all 1s linear;
   cursor: pointer;
@@ -250,9 +273,7 @@ html{
 .card:hover{
   background-color: #009FFF;  /* fallback for old browsers */
  }
- .description{
-  width: 80%;
- }
+
 .shortcuts-block{
   display: flex;
 } 
@@ -543,10 +564,12 @@ p {
 
 .scoreBar{
   width: 10%;
-  border-radius: 3em;
+  border-radius: 1.5em;
   margin: 0.3em;
   padding: 0.6em;
-  background: #e445cf;
+  /* border: solid 2px #00bfff; */
+  border-radius: 3em;
+  background: #6a82fb78;
   right: 0;
   margin-bottom: 1em;
   font-size: 1.5em;
@@ -636,7 +659,6 @@ p {
 }
 .profile-menu-bar{
   box-sizing: border-box;
-  padding: 2em;
    width: 20%;
    height: 100%;
    background: #7a2dff;
@@ -648,13 +670,18 @@ p {
   box-sizing: border-box;
   width: 80%;
   height: 100%;
-  background: #fff;
+  background: rgba(192, 192, 192, 0.464);
   color: #7a2dff;
   padding: 3%;
   
 }
 .profile-section{
   cursor: pointer;
+  margin: 0;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  padding-left: 2em;
+  transition: all 0.2s linear;
 }
 
 
@@ -682,4 +709,46 @@ p {
 .emailEdit{
   padding-bottom: 2em;
   border-bottom: solid 2px #c5a7f9;
+}
+
+.verify{
+   border-radius: 1em;
+   padding: 0.5em 1em;
+   width: fit-content;
+   font-weight: 500;
+}
+.verify.true{
+  background-color: #2dff9d;
+  color: #48624e;
+}
+.verify.false{
+  cursor: pointer;
+  background-color: #f47f96;
+  color: #923928;
+}
+.profile-content button{
+  padding: 10px 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #7a2dff;
+  transition: all 0.2s linear;
+  margin: 0.5em;
+}
+.profile-section.active{
+  background: rgb(80, 56, 186);
+  margin-left: 0;
+}  
+.valid  input[type=text]{
+  background-color: #2dff9d;
+}
+ .invalid input[type=text]{
+  background-color:  #f47f96;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

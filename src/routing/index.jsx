@@ -12,7 +12,7 @@ import Profile from "../pages/profile";
 
 
 import { basicGmail } from '../modules/compositions';
-import { shortcutsList } from '../modules/shortcuts';
+import { shortcutsListGmail } from '../modules/shortcuts';
 import {user as userInfo} from "../modules/user";
 import { observer } from 'mobx-react-lite';
 import RequireAuth from "../hok/RequireAuth";
@@ -31,16 +31,13 @@ export const MyRoutes = observer(() => {
 
   const [gameStatus,setGameStatus] = useState("basic");
   const [song,setSong] = useState(compositionProps[0]);
-  const [currentCommands,setCurrentCommands] = useState(shortcutsList.slice(song.section[0],song.section[1]));
+  const [currentCommands,setCurrentCommands] = useState(shortcutsListGmail.slice(song.section[0],song.section[1]));
   const [myUser, setUser] = useState(userInfo); 
   
   
   useEffect(()=>{
     
-    setCurrentCommands(shortcutsList.slice(song.section[0],song.section[1]));
-    
     localStorage.setItem('user',JSON.stringify(myUser));
-
 
     },[song]);
 
@@ -59,9 +56,9 @@ export const MyRoutes = observer(() => {
             <Route path='/' element={<App/>} />
             <Route path='/compositions/:category/:app' element={<Compositions/>} />
             <Route path='/play/:category/:app/:param' element={<Play/>}/>
-            <Route path='/instruction/:category/:app/:param' element={<Instruction shortcutsList ={shortcutsList} basicGmail = {basicGmail}/>} />
+            <Route path='/instruction/:category/:app/:param' element={<Instruction basicGmail = {basicGmail}/>} />
             <Route path='/login' element={<Login/>}/>
-            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
             <Route path='test' element={<TestComponent/>}/>
           </Routes>
         </BrowserRouter>

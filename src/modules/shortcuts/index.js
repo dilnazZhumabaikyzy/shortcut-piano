@@ -1,6 +1,6 @@
-const shortcutsList = [
+const shortcutsListGmail = [
     {description: "К предыдущему сообщению в открытой цепочке",
-    keys:["P"],
+    keys:["P","Tab"],
     instruction: {h2: "not yet",
     description: "not yet",
     source: ""}
@@ -151,4 +151,4 @@ const shortcutsList = [
 
 
 
-export {shortcutsList}; 
+export {shortcutsListGmail}; 

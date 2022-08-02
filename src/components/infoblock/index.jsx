@@ -2,13 +2,17 @@ import { UserContext } from "../../routing";
 import { useState, createContext, useContext, useEffect } from "react";
 import { ProgressContext } from "../playArea";
 import { user } from "../../modules/user";
+import { shortcutsListGmail } from "../../modules/shortcuts";
+
 //console\.log\(([^)]+)\);
 export const Infoblock = (props) => {
 
   const mysong = props.mysong;
   
+  console.log(shortcutsListGmail);
   
-  const {currentCommands} = useContext(UserContext);
+  // const {currentCommands} = useContext(UserContext);
+  const currentCommands = shortcutsListGmail.slice(mysong.section[0],mysong.section[1]);
   const {n,userScore,setUserScore,isEnd,isMouseOver, setMouse} = useContext(ProgressContext);
   
 

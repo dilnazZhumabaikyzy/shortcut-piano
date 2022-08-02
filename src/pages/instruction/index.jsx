@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import videojpeg from "../../assets/images/video.jpg";
 import { useState,useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { shortcutsListGmail } from "../../modules/shortcuts";
 
 export const Instruction = (props)=>{
     const {category, app} = useParams();
@@ -16,7 +17,7 @@ export const Instruction = (props)=>{
     const [detailsIsActive,setStatus] = useState(false);
     const [currentInstruction, setCurrentInstruction] = useState("");
 
-    const shortcutsList = props.shortcutsList;
+    const shortcutsList = shortcutsListGmail;
     const basicGmail = props.basicGmail;
 
     const currentCompositionIndex = basicGmail.findIndex(item => (item.id === param));

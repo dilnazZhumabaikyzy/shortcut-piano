@@ -2,10 +2,10 @@ import { makeAutoObservable } from "mobx";
 import AutService from "../services/AuthService";
 import axios from "axios";
 import { toJS } from 'mobx';
+import UserService from "../services/UserService";
 export default class Store {
     user = {};
     isAuth = false;
-    check = 'no user';
     isLoading = false;
     checked = false;
     constructor() {
@@ -18,7 +18,6 @@ export default class Store {
 
     setUser(user) {
         this.user = user;
-        this.check = 'user'
     }
     setLoading(bool) {
         this.isLoading = bool;
@@ -63,18 +62,29 @@ export default class Store {
             console.log(error.response?.data?.message)
         }
     }
-  
+    async edit(data){
+          try {
+            const response = await UserService.edit(data);
+            console.log(response);
+            localStorage.setItem('token',response.data.accessToken);
+            this.setAuth(true);
+            this.setUser(response.data.user);
+          } catch (error) {
+            console.log(error.response?.data?.message);
+            return error?.response?.data;
+          }
+    }
     async checkAuth() {
         this.setLoading(true);
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/refresh`, {withCredentials: true});
-            console.log(response);
+            // console.log(response);
             localStorage.setItem('token',response.data.accessToken);
             this.setAuth(true);
-            console.log(this.isAuth);
+            // console.log(this.isAuth);
             this.setUser(response.data.user);
         } catch (error) {
-            console.log(error.response?.data?.message)
+            // console.log(error.response?.data?.message)
         }
         finally {
             this.setLoading(false);

@@ -738,9 +738,6 @@ export const Keyboard = ({song}) => {
         audioTune.load();
         audioApplause.load();
         console.log(params);
-        // window.onbeforeunload = function() {
-        //     return "Data will be lost if you leave the page, are you sure?";
-        //   };
     }, []);
 
     const synth = new Tone.Synth().toDestination();
@@ -753,9 +750,6 @@ export const Keyboard = ({song}) => {
     const [rowS6, setRowS6] = useState(row6);
     
     const keyboard = [rowS1,rowS2,rowS3,rowS4,rowS5,rowS6];
-
-
-
 
     function setStyle(row, number, index, bool = true) {
         row[index].style = bool;
