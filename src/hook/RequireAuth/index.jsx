@@ -9,9 +9,6 @@ const RequireAuth = ({children}) => {
 
   const isAuth = store.isAuth;
   const madeCheckRequest = store.checked;
-  // console.log("require auth  -",store.isAuth);
-  // console.log("require auth  -",store.check);
-  // console.log({madeCheckRequest});
   if(store.isLoading){
    
   }

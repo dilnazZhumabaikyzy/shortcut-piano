@@ -737,7 +737,7 @@ export const Keyboard = ({song}) => {
     useEffect(() => {
         audioTune.load();
         audioApplause.load();
-        console.log(params);
+        ;
     }, []);
 
     const synth = new Tone.Synth().toDestination();
@@ -768,30 +768,36 @@ export const Keyboard = ({song}) => {
             break;
         }
     }
-    
+
+    let mapKey = {};
+    let keyArray = {};
+
     useEffect(()=>{
         document.addEventListener('keydown', (event)=>{
             event.preventDefault();
             const keycode = event.keyCode;
             const keyname = event.code;
-                    
+            keyArray[keycode] = true;    
             const res = findKey(keycode,keyname);
             if(res !== undefined){
                const [row, number, index] = res; 
             setStyle(row, number, index);
             handleOrder(keycode); 
-            }
-                    
+            }           
         });   
+        
         document.addEventListener('keyup', (event) => {     
             event.preventDefault();  
             const keycode = event.keyCode;
-            const keyname = event.code;   
+            const keyname = event.code; 
+            keyArray[keycode] = false;      
             const res = findKey(keycode,  keyname);
+
             if(res === undefined)return;       
                 const [row, number, index] = res; 
                 setStyle(row, number, index,false);    
-        }, false);      
+            }, false);      
+
     }, []);
 
     function findKey(keycode,keyname){
@@ -836,22 +842,31 @@ export const Keyboard = ({song}) => {
      const noteOrder = composition.noteOrder;
         
        
-        let   nowKey = notes[noteOrder[i]];
+        let nowKey = notes[noteOrder[i]];
         const [faile, setFaile] = useState(false);
+
+        function handleKeyArray({code},keyCode){
+            console.log(code);
+            console.log(keyCode);
+            mapKey[keyCode] = true;
+            if(mapKey[code[0]]&&mapKey[code[1]]){
+                return true
+            }
+            console.log(mapKey);
+            mapKey = {};
+            return false;
+        }
         async function handleOrder(keycode){
-            
-            if(keycode === nowKey.code){
+        console.log(Array.isArray(nowKey.code)); 
+        if(Array.isArray(nowKey.code) ? handleKeyArray(nowKey,keycode) :  keycode === nowKey.code){
                 setFaile(false);
                 i++;
                 isCorrect = true;
-                // score =+ 10;
-                
             synth.triggerAttackRelease(nowKey.play, "8n");
         }
         else{
             audioTune.play();
             setFaile(true);
-            i=0;  
             isCorrect = false;          
         }
         if(i>noteOrder.length-1){
@@ -863,8 +878,7 @@ export const Keyboard = ({song}) => {
               confettiNumber: 100,
          });
 
-            audioApplause.play();
-            
+            audioApplause.play();            
             i=0;            
         };
         
@@ -872,61 +886,10 @@ export const Keyboard = ({song}) => {
          
         setN({name:noteOrder[i], index: i, bool: isCorrect});
     }
-    
-//__________________COMMENTS ANIMATION___________________________________________________
-    
-//     const [comment, setComment] = useState("+10");
-//     const [myAnimation, setAnimate] = useState("hideComment");
-//     const [firstEnter, setEnterStatus] = useState(true);
-//     const [combo, setCombo] = useState(0);
-    
-//     useEffect(()=>{
-//         if(!firstEnter){
-//              if(faile){
-//             setComment("Try again!");
-//             animateComments();
-//             setCombo(0);
-//            }
-//         else if(!isMouseOver){
-//            setCombo(combo+1);
-//            checkProgress(combo);
-//            animateComments();
-//          }
-//         }
-       
-        
-//         console.log(combo);
-//     },[n,faile]);
-
-//     useEffect(()=>{
-//         setEnterStatus(false);
-//     },[]);
-     
-//    function checkProgress(n){    
-//     if(n===7){
-//         setUserScore(userScore+50);
-//         setComment("Great! +50");
-        
-//     }
-//     else if(n===4){
-//         setUserScore(userScore+30);
-//         setComment("Good! +30");
-//     }
-//     };
-
-    
-//    function animateComments(){
-//       setAnimate("");
-//       setTimeout((
-//       )=>{ setAnimate("hideComment");}, 320);
-//    }
-
+  
 //_____________________________RETURN_______________________________________________________________________
     return (
     <> {isEnd?<ShowScore setIsEnd = {setIsEnd}/>:""}
-        {/* <div className= {`comments ${myAnimation}`}>
-               {comment}
-        </div> */}
         <div className='keyboard'>
             <div className="row" id='functions'>
                 {

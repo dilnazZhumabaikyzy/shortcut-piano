@@ -16,7 +16,7 @@ export const ShowScore = ({setIsEnd})=>{
             <h2>Your score: {userScore} 🏆</h2>
             <div className="buttons">
                 <Link to = {`/compositions/${category}/${app}`}>
-                <button onClick={()=>console.log("you clicked me!")}>Go back</button>
+                <button >Go back</button>
                 </Link> 
                   
                 <button onClick={()=> {setIsEnd(false); window.location.reload(false)}}>Again</button>

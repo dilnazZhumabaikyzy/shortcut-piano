@@ -85,7 +85,7 @@ a{
 }
 
 .app .cards img {
-  width: 150px;
+  width: 55%;
   height: auto;
 }
 
@@ -292,7 +292,7 @@ a{
   justify-content: space-between;
   align-items: center;
 }
-.instruction-header button, .composition button, .scoreBox button{
+.text-link button, .composition button, .scoreBox button{
   padding: 10px 50px;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
@@ -302,6 +302,13 @@ a{
   cursor: pointer;
   color: #FC5C7D;
   transition: all 0.2s linear;
+}
+.intruction-cards button{
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 .instruction-header button:hover, .composition button:hover{
   color:#fff;

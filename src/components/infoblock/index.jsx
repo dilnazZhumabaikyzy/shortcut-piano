@@ -9,7 +9,7 @@ export const Infoblock = (props) => {
 
   const mysong = props.mysong;
   
-  console.log(shortcutsListGmail);
+  ;
   
   // const {currentCommands} = useContext(UserContext);
   const currentCommands = shortcutsListGmail.slice(mysong.section[0],mysong.section[1]);
@@ -22,20 +22,20 @@ export const Infoblock = (props) => {
 
 
   useEffect(()=>{
-    console.log("REFRESH");
-    console.log(progressLine);
+    ;
+    ;
   },[]);
 
 
   useEffect(() => {    
-    // console.log(n);
+    // ;
     if(!firstEnter)
     fireAnim(n.bool);
   }, [n]);
 
 
   useEffect(()=>{
-    // console.log(userScore);
+    // ;
   },[userScore])
   
   function fireAnim(bool){
@@ -46,9 +46,8 @@ export const Infoblock = (props) => {
       if(bool){     
         let percent =  progressLine + 90/mysong.noteOrder.length;
         setProgressLile(percent);
-        console.log();
        if(!isMouseOver)
-       {console.log("ui");
+       {;
         setUserScore(userScore + 10);}
       }
       else{
@@ -93,7 +92,7 @@ export const Infoblock = (props) => {
         }
        }    
        
-       console.log(combo);
+       ;
    },[n]);
 
    useEffect(()=>{

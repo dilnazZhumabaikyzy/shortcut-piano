@@ -11,7 +11,7 @@ export const Instruction = (props)=>{
     useEffect(() => {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         sessionStorage.setItem('currentSongScore',{});
-        console.log(sessionStorage.getItem('currentSongScore'));
+        // console.log(sessionStorage.getItem('currentSongScore'));
       }, []);
     
     const [detailsIsActive,setStatus] = useState(false);
@@ -35,7 +35,7 @@ export const Instruction = (props)=>{
    }
   return (
     <>
-    <div className={`details ${detailsIsActive ? "":"hide"}`}>
+    {/* <div className={`details ${detailsIsActive ? "":"hide"}`}>
         <div className= "details-overlay" onClick={()=>{ setStatus(false)}}>     
         </div>
         <div className= "details-inner">
@@ -47,18 +47,12 @@ export const Instruction = (props)=>{
                     <img src={videojpeg} alt=""/> 
             </div>
         </div>
-    </div> 
+    </div>  */}
 
     <div className='container'>    
       <Header></Header>
       <div className="instruction-header" >
           <h1>Memorize these shortcuts</h1>
-          <Link to = {`/play/${category}/${app}/${currentCompositionIndex}`}
-           className='text-link'>
-                     <button>
-                    Go
-                    </button>
-          </Link>
        </div>
     
         <div className="intruction-cards"> 
@@ -76,6 +70,12 @@ export const Instruction = (props)=>{
                     </div>
                 ))
             }
+          <Link to = {`/play/${category}/${app}/${currentCompositionIndex}`}
+           className='text-link'>
+                     <button>
+                    Play
+                    </button>
+          </Link>
         </div>
      </div>
   </>  

@@ -8,7 +8,6 @@ const TestComponent = ()=>{
     const [users, setUsers] = useState([]);
     const {store} = useContext(UserContext);
     const isAuth = store.isAuth;
-    console.log("test  -",store.isAuth);
 async function getUsers() {
             try {
                 const response = await UserService.fetchUsers();

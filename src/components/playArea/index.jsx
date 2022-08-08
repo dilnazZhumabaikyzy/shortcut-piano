@@ -7,7 +7,6 @@ export const ProgressContext = createContext();
 export const PlayArea = ({songIndex}) => {
   useEffect(()=>{
     sessionStorage.setItem('currentSongScore', 0); 
-    console.log(sessionStorage.getItem('currentSongScore'));
   },[]);
 
   let mysong = basicGmail[songIndex];

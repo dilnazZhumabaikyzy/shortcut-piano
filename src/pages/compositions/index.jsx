@@ -13,7 +13,6 @@ import { UserContext } from "../../routing";
 export const Compositions = () => {
   useEffect(()=>{
      sessionStorage.setItem("currentSongScore", {});
-     console.log(sessionStorage.getItem('currentSongScore'));
   },[]);
   
   const {category,app} = useParams();
@@ -43,7 +42,7 @@ export const Compositions = () => {
     setStars(JSON.parse(localStorage.user).basicGmail);
   }, []);
   useEffect(()=>{
-    console.log("ma change");
+    ;
   },[ma]);
 
   if (category === "advanced") {
@@ -57,7 +56,6 @@ export const Compositions = () => {
 
   };
   function handleAnimation(index, bool = true){
-    console.log("handleAnimation");
     let temp = ma;
     for(let i = 0; i < ma.length; i++){
       if(i !== index){
@@ -83,9 +81,9 @@ export const Compositions = () => {
     //   },
     //   ...ma.slice(index+1)   
     //   ];
-      console.log(temp);
+      ;
       setMa([...temp]);
-      console.log(ma);    
+      ;    
   }
 
   return (

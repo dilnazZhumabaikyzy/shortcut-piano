@@ -15,8 +15,8 @@ import { basicGmail } from '../modules/compositions';
 import { shortcutsListGmail } from '../modules/shortcuts';
 import {user as userInfo} from "../modules/user";
 import { observer } from 'mobx-react-lite';
-import RequireAuth from "../hok/RequireAuth";
-import TestComponent from "../hok/TestComponent";
+import RequireAuth from "../hook/RequireAuth";
+import TestComponent from "../hook/TestComponent";
 import Store from '../store/store.js'
 
 export const UserContext = createContext();
@@ -29,17 +29,12 @@ export const MyRoutes = observer(() => {
   
   const compositionProps = basicGmail;
 
-  const [gameStatus,setGameStatus] = useState("basic");
-  const [song,setSong] = useState(compositionProps[0]);
-  const [currentCommands,setCurrentCommands] = useState(shortcutsListGmail.slice(song.section[0],song.section[1]));
-  const [myUser, setUser] = useState(userInfo); 
-  
   
   useEffect(()=>{
     
-    localStorage.setItem('user',JSON.stringify(myUser));
+    localStorage.setItem('user',JSON.stringify(store.user));
 
-    },[song]);
+    },[]);
 
    useEffect(()=>{
     if(localStorage.getItem('token')){
@@ -50,7 +45,7 @@ export const MyRoutes = observer(() => {
     }
    },[])
     return (
-        <UserContext.Provider value={{currentCommands,gameStatus,setGameStatus,song, setSong, myUser, setUser, store}}>
+        <UserContext.Provider value={{store}}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<App/>} />

@@ -10,7 +10,6 @@ export const Main = ()=>{
     //     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     //     // 
     //   }, []);
-    const  {gameStatus, setGameStatus} = useContext(UserContext);
     return(
         <>
         <div className="wrapper">
@@ -48,7 +47,7 @@ export const Main = ()=>{
                 <div className='play-block'>
                      <h1>Basic</h1>
                      <Link to="/compositions/basic/gmail" className='text-link'>
-                     <button className='play-basic-win' onClick={()=>setGameStatus("basic")}>
+                     <button className='play-basic-win'>
                       Play                        
                      </button>
                      </Link>
@@ -58,7 +57,7 @@ export const Main = ()=>{
                     <div style={{fontSize: "1.3rem", marginBottom: "1rem"}}>
                     74 shortcuts 
                     </div>
-                    Suitable for beginners. 5 compositions for complete learning. Smooth learning on shortcut keys  
+                    Suitable for beginners. 5 compositions for complete learning. 
                 </h4> 
             </div>
                 <div className='advanced'>
@@ -66,7 +65,7 @@ export const Main = ()=>{
                                      <h1>Advanced</h1>
                                      <Link to="/compositions/advanced/gmail
                                      " className='text-link'>
-                                     <button className='play-advanced-win'  onClick={()=>setGameStatus("advanced")}>Play</button>
+                                     <button className='play-advanced-win'>Play</button>
                      </Link>
                     </div>   
                 <h4>
@@ -86,7 +85,7 @@ export const Main = ()=>{
                 <div className='play-block'>
                      <h1>Basic</h1>
                      <Link to="/compositions/basic/gmail" className='text-link'>
-                     <button className='play-basic-win' onClick={()=>setGameStatus("basic")}>
+                     <button className='play-basic-win'>
                       Play                        
                      </button>
                      </Link>
@@ -100,7 +99,7 @@ export const Main = ()=>{
                     <div className='play-block'>
                                      <h1>Advanced</h1>
                                      <Link to="/compositions/advanced/gmail" className='text-link'>
-                                     <button className='play-advanced-win'  onClick={()=>setGameStatus("advanced")}>Play</button>
+                                     <button className='play-advanced-win'>Play</button>
                      </Link>
                     </div>   
                 <h4>Donec nec lorem id nunc dapibus pellentesque sed scelerisque nisl. In scelerisque iaculis mi, vel dapibus ex. Nunc vitae nunc scelerisque, porttitor ex quis, sagittis felis. Ut porttitor nulla non dolor luctus, eu ultricies orci condimentum.</h4>
